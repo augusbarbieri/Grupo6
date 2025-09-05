@@ -1,0 +1,61 @@
+/* Fondo general oscuro y texto claro */
+body {
+  background-color: #1e1e2f;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.mascotas-container {
+  background-color: #343a40;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 1100px;
+  margin: 30px auto;
+}
+
+.mascota-card {
+  background-color: #495057;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+}
+
+.mascota-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 12px;
+}
+
+.smart-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #111;
+  color: #bbb;
+  text-align: center;
+  padding: 12px 16px;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform .3s ease, opacity .3s ease;
+  pointer-events: none; /* No clickeable mientras está oculto */
+}
+
+.smart-footer.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;  
+}
+
+.smart-footer a {
+  color: #bbb;
+  text-decoration: none;
+}
+
+.smart-footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
