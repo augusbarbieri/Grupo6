@@ -75,5 +75,32 @@
   </div>
 </div>
 </body>
+
+  <!-- FOOTER -->
+  <footer id="smartFooter" class="smart-footer">
+    <p>
+      <a href="https://www.instagram.com/la_cucha_de_chimuela" target="_self">
+        Nuestras redes
+      </a>
+    </p>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Footer inteligente
+    const footer = document.getElementById('smartFooter');
+    let hideTimeout;
+
+    function showFooter() {
+      footer.classList.add('show');
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => footer.classList.remove('show'), 2500);
+    }
+
+    window.addEventListener('mousemove', showFooter);
+    window.addEventListener('scroll', showFooter);
+    window.addEventListener('touchstart', showFooter);
+  </script>
+
 </html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>    
