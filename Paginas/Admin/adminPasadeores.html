@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Nuestros Paseadores</title>
+    <title> Manadas - Paseadores</title>
     
         <!-- Bootstrap CSS -->
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -11,13 +11,14 @@
       <link rel="stylesheet" href="D:\Archivos\UCA - Trabajos\DW_Manadas\Grupo6\Assets\css\style.css">
 <body>
       <!-- HEADER con Navbar -->
-  <header class="mb-auto w-100 bg-primary text-white">
+  <div class="w-100">
+    <header class="mb-auto w-100 bg-primary text-white">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
                 <!-- Logo + título -->
                 <a class="navbar-brand d-flex align-items-center" href="landingAdmin.html">
                     <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-2">
-                    <span>Manadas - Admin</span>
+                    <span>Administracion</span>
                 </a>
 
                 <!-- Botón hamburguesa -->
@@ -42,14 +43,14 @@
             </div>
         </nav>
     </header>
-
+  
     <div class="ms-3 me-3 mt-5">
         <div class="d-flex align-items-center mb-4">
             <h2 class="mb-4 text-start">Listado de Paseadores</h2>
             <button type="button" class="btn btn-primary ms-auto" onclick="location.href='adminFormAddPaseador.html'">Agregar Paseador</button>
         </div>
         <div class="table-responsive">
-            <table class="table" style="height: 150px;">
+            <table class="table w-auto" style="height: 150px;">
                 <colgroup>
                     <col style="width: 5%;">
                     <col style="width: 10%;">
@@ -96,6 +97,10 @@
             </table>
         </div>
     </div>
+</div>
+      
+
+    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>
