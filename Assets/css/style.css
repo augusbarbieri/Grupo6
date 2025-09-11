@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Galdeano&family=Roboto+Slab:wght@400;700&display=swap');
+
+
 /* ===========================
    HEADER
 =========================== */
@@ -64,7 +67,7 @@ p, small {
 /* Títulos, subtítulos, links, navbar, botones → Story Script */
 h1, h2, h3, h4, h5, h6,
 .navbar, .nav-link, .btn, footer, strong {
-  font-family: 'Story Script', cursive;
+  font-family: 'Galdeano', cursive;
   font-weight: normal;
 text-shadow: #0000002b 1px 1px 2px;
 }
