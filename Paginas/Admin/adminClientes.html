@@ -9,25 +9,37 @@
 
 </head>
 <body>
-    <header class="mb-auto w-100 bg-primary text-white">
-        <div class="container-fluid p-4 d-flex justify-content-between align-items-center">
-        <!-- Logo + título -->
-            <div class="d-flex align-items-center">
-                <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-3">
-                <h3 class="mb-0">
-                    <a href="landingAdmin.html" class="site-title text-white text-decoration-none">
-                        Manadas - Administracion
-                    </a>
-                </h3>
-            </div>
+      <!-- HEADER con Navbar -->
+  <header class="mb-auto w-100 bg-primary text-white">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <!-- Logo + título -->
+                <a class="navbar-brand d-flex align-items-center" href="landingAdmin.html">
+                    <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-2">
+                    <span>Manadas - Admin</span>
+                </a>
 
-        <!-- Navegación -->
-            <nav class="nav nav-masthead">
-                <a class="nav-link fw-bold text-white" href="adminPasadeores.html">Mis paseadores</a>
-                <a class="nav-link fw-bold text-white" href="adminClientes.html">Mis clientes</a>
-                <a class="nav-link fw-bold text-white" href="landingAdmin.html">Panel Principal</a>
-            </nav>
-        </div>
+                <!-- Botón hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                        <a class="nav-link fw-bold text-white" href="adminPasadeores.html">Mis paseadores</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link fw-bold text-white" href="adminClientes.html">Mis clientes</a>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link fw-bold text-white" href="landingAdmin.html">Panel Principal</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </header>
 
     <div class="ms-3 me-3 mt-5">
