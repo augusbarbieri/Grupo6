@@ -57,7 +57,7 @@ body {
    HERO
 =========================== */
 .hero {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(66, 32, 10, 0.25);
   color: #00ccff;
   padding: 100px 200px;
   text-align: center;
