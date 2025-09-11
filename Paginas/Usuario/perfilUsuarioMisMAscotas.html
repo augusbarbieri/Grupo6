@@ -5,88 +5,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mis Mascotas</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
-
-  <style>
-    /* Fondo general oscuro y texto claro */
-    body {
-      background-color: #1e1e2f;
-      color: #fff;
-      min-height: 100vh;
-    }
-
+  <link rel="stylesheet" href="../../Assets/css/style.css">
   
-    .mascotas-container {
-      background-color: #343a40;
-      border-radius: 12px;
-      padding: 30px;
-      max-width: 1100px;
-      margin: 30px auto;
-    }
-
-    .mascota-card {
-      background-color: #495057;
-      border-radius: 10px;
-      padding: 20px;
-      text-align: center;
-      color: #fff;
-    }
-
-    .mascota-card img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-      margin-bottom: 12px;
-    }
-
-
-    .smart-footer {
-      position: fixed;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: #111;
-      color: #bbb;
-      text-align: center;
-      padding: 12px 16px;
-      transform: translateY(100%);
-      opacity: 0;
-      transition: transform .3s ease, opacity .3s ease;
-      pointer-events: none; /* No clickeable mientras está oculto */
-    }
-    .smart-footer.show {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: auto;  
-    }
-    .smart-footer a {
-      color: #bbb;
-      text-decoration: none;
-    }
-    .smart-footer a:hover {
-      color: #fff;
-      text-decoration: underline;
-    }
-  </style>
 </head>
 <body>
 
 
- <header class="mb-auto">
-  <div class="text-bg-dark p-4 d-flex justify-content-between align-items-center">
-    <h3 class="float-md-start mb-0">
-      <a href="landingUsuario.html" class="text-decoration-none text-white">
-        Manadas - Usuario
-      </a>
-    </h3>
-    
-    <nav class="nav nav-masthead justify-content-center float-md-end">
-      <a class="nav-link fw-bold py-1 px-10 active" href="perfilUsuarioMisManadas.html">Mis Manadas</a>
-      <a class="nav-link fw-bold py-1 px-10" style="color: yellow;" href="perfilUsuarioMisMascotas.html">Mis Mascotas</a>
-      <a class="nav-link fw-bold py-1 px-10" href="perfilUsuario.html">Mi Perfil</a>
+ <!-- Header -->
+<header class="mb-auto w-100 bg-primary text-white">
+  <div class="container-fluid p-4 d-flex justify-content-between align-items-center">
+    <!-- Logo + título -->
+    <div class="d-flex align-items-center">
+      <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-3">
+      <h3 class="mb-0">
+        <a href="landingUsuario.html" class="site-title text-white text-decoration-none">
+          Manadas - Usuario
+        </a>
+      </h3>
+    </div>
+
+    <!-- Navegación -->
+    <nav class="nav nav-masthead">
+      <a class="nav-link fw-bold text-white" href="perfilUsuarioMisManadas.html"  style="color: rgb(255, 153, 0);">Mis Manadas</a>
+      <a class="nav-link fw-bold text-warning" href="perfilUsuarioMisMascotas.html">Mis Mascotas</a>
+      <a class="nav-link fw-bold text-white" href="perfilUsuario.html">Mi Perfil</a>
     </nav>
   </div>
 </header>
+<!-- Hero -->
+<section class="hero text-center text-white bg-dark py-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold">Mis mascotas</h1>
+    <p class="lead">🐶 Aca estan tu perritos 🐶</p>
+  </div>
+</section>
 
 <div class="ms-3 me-3 mt-5">
   <div class="d-flex align-items-center mb-4">
@@ -100,7 +52,7 @@
     <!-- Mascota 1 -->
     <div class="col-md-4">
       <div class="mascota-card">
-        <img src="../../Assets/img/yo.jpeg" alt="Foto de perfil"
+        <img src="../../Assets/img/Labrador.jfif" alt="Foto de perfil"
           class="rounded-circle border d-block mx-auto" width="150" height="150"> 
         <input type="file" class="form-control mb-2" accept="image/*">
         <input type="text" class="form-control mb-2" placeholder="Nombre">
@@ -121,7 +73,7 @@
     <!-- Mascota 2 -->
     <div class="col-md-4">
       <div class="mascota-card">
-        <img src="../../Assets/img/yo.jpeg" alt="Foto de perfil"
+        <img src="../../Assets/img/BorderCollie.jfif" alt="Foto de perfil"
           class="rounded-circle border d-block mx-auto" width="150" height="150"> 
         <input type="file" class="form-control mb-2" accept="image/*">
         <input type="text" class="form-control mb-2" placeholder="Nombre">
@@ -141,7 +93,7 @@
     <!-- Mascota 3 -->
     <div class="col-md-4">
       <div class="mascota-card">
-        <img src="../../Assets/img/yo.jpeg" alt="Foto de perfil"
+        <img src="../../Assets/img/Caniche.jfif" alt="Foto de perfil"
           class="rounded-circle border d-block mx-auto" width="150" height="150"> 
         <input type="file" class="form-control mb-2" accept="image/*">
         <input type="text" class="form-control mb-2" placeholder="Nombre">
