@@ -3,24 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Clientes</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">  <link rel="stylesheet" href="../../Assets/css/style.css">
 
 </head>
 <body>
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <header class="mb-auto">
-            <div class="text-bg-dark p-4 d-flex justify-content-between align-items-center">
-                <h3 class="float-md-start mb-0">Manadas Admin</h3>
-                
-                <nav class="nav nav-masthead justify-content-center float-md-end">
-                    <a href="adminPasadeores.html" class="nav-link fw-bold py-1 px-10 active">Mis pasadeadores</a>
-                    <a href="adminClientes.html" class="nav-link fw-bold py-1 px-10">Mis clientes</a>
-                    <a href="landingAdmin.html" class="nav-link fw-bold py-1 px-10">Panel Principal</a>
-                </nav>
+    <header class="mb-auto w-100 bg-primary text-white">
+        <div class="container-fluid p-4 d-flex justify-content-between align-items-center">
+        <!-- Logo + título -->
+            <div class="d-flex align-items-center">
+                <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-3">
+                <h3 class="mb-0">
+                    <a href="landingAdmin.html" class="site-title text-white text-decoration-none">
+                        Manadas - Administracion
+                    </a>
+                </h3>
             </div>
-        </header>
-    </div>
+
+        <!-- Navegación -->
+            <nav class="nav nav-masthead">
+                <a class="nav-link fw-bold text-white" href="adminPasadeores.html">Mis paseadores</a>
+                <a class="nav-link fw-bold text-white" href="adminClientes.html">Mis clientes</a>
+                <a class="nav-link fw-bold text-white" href="landingAdmin.html">Panel Principal</a>
+            </nav>
+        </div>
+    </header>
 
     <div class="ms-3 me-3 mt-5">
         <div class="d-flex align-items-center mb-4">
