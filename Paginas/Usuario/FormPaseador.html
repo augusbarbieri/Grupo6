@@ -12,26 +12,39 @@
 
 </head>
 <body>
-<header class="mb-auto w-100 bg-primary text-white">
-  <div class="container-fluid p-4 d-flex justify-content-between align-items-center">
-    <!-- Logo + título -->
-    <div class="d-flex align-items-center">
-      <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-3">
-      <h3 class="mb-0">
-        <a href="landingUsuario.html" class="site-title text-white text-decoration-none">
-          Manadas - Usuario
+   <!-- HEADER con Navbar -->
+  <header class="mb-auto w-100 bg-primary text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <!-- Logo + título -->
+        <a class="navbar-brand d-flex align-items-center" href="landingUsuario.html">
+          <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-2">
+          <span>Manadas - Usuario</span>
         </a>
-      </h3>
-    </div>
 
-    <!-- Navegación -->
-    <nav class="nav nav-masthead">
-      <a class="nav-link fw-bold text-white" href="perfilUsuarioMisManadas.html">Mis Manadas</a>
-      <a class="nav-link fw-bold text-white" href="perfilUsuarioMisMascotas.html" style="color: rgb(255, 153, 0);">Mis Mascotas</a>
-      <a class="nav-link fw-bold text-white" href="perfilUsuario.html">Mi Perfil</a>
+        <!-- Botón hamburguesa -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuarioMisManadas.html">Mis Manadas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuarioMisMascotas.html">Mis Mascotas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuario.html">Mi Perfil</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
-  </div>
-</header>
+  </header>
 
  <!-- Hero-->
   <section class="hero">
