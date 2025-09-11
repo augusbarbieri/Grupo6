@@ -3,58 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mis Mascotas</title>
+  <title>Paseos de mi Mascota</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <!-- Tu hoja de estilos -->
   <link rel="stylesheet" href="../../Assets/css/style.css">
 </head>
 <body>
 
- <!-- Header -->
-<header class="mb-auto w-100 bg-primary text-white">
-  <div class="container-fluid p-4 d-flex justify-content-between align-items-center">
-    <!-- Logo + título -->
-    <div class="d-flex align-items-center">
-      <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-3">
-      <h3 class="mb-0">
-        <a href="landingUsuario.html" class="site-title text-white text-decoration-none">
-          Manadas - Usuario
-        </a>
-      </h3>
-    </div>
-
-    <!-- Navegación -->
-    <nav class="nav nav-masthead">
-      <a class="nav-link fw-bold text-warning" href="perfilUsuarioMisManadas.html">Mis Manadas</a>
-      <a class="nav-link fw-bold text-white" href="perfilUsuarioMisMascotas.html">Mis Mascotas</a>
-      <a class="nav-link fw-bold text-white" href="perfilUsuario.html">Mi Perfil</a>
-    </nav>
-  </div>
-</header>
-
-
-  <!-- Contenedor Mascotas -->
-  <div class="row g-4 justify-content-center">
-    <div class="col-md-4 d-flex justify-content-center">
-      <div class="mascota-card" style="width: 250px;">
-        <img src="../../Assets/img/yo.jpeg" alt="Foto de perfil"
-          class="rounded-circle border d-block mx-auto mb-3" width="150" height="150"> 
-        <input type="file" class="form-control mb-2" accept="image/*">
-        <input type="text" class="form-control mb-2" placeholder="Nombre">
+  <!-- Header -->
+  <header class="mb-auto w-100 bg-primary text-white">
+    <div class="container-fluid p-4 d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-3" style="height:50px;">
+        <h3 class="mb-0">
+          <a href="landingUsuario.html" class="site-title text-white text-decoration-none">
+            Manadas - Usuario
+          </a>
+        </h3>
       </div>
-    </div>
-  </div>
 
-  <!-- FOOTER -->
+      <nav class="nav nav-masthead">
+        <a class="nav-link fw-bold text-warning" href="perfilUsuarioMisManadas.html">Mis Manadas</a>
+        <a class="nav-link fw-bold text-white" href="perfilUsuarioMisMascotas.html">Mis Mascotas</a>
+        <a class="nav-link fw-bold text-white" href="perfilUsuario.html">Mi Perfil</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenido principal -->
+  <main class="container my-5">
+
+    <!-- Mascota principal -->
+
+    <section class="hero text-center text-white bg-dark py-5" pa >
+  <div class="container">
+      <img src="../../Assets/img/BorderCollie.jfif" alt="Foto de mi mascota" 
+           class="rounded-circle border mb-3" width="300" height="300" padding = >
+      <h2>🐾 Rocco 🐾</h2>
+  </div>
+</section>
+
+
+    <!-- Paseadores y compañeros -->
+    <section>
+      <h3 class="mb-4 text-primary">Mis Manadas Actuales</h3>
+
+      <!-- Paseador 1 -->
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <img src="../../Assets/img/walker2.jpg" class="rounded-circle me-3" width="200" height="200" alt="Paseador">
+            <div>
+              <h5 class="mb-0">Carlos</h5>
+              <small class="text-muted">Experiencia: 3 años</small>
+            </div>
+          </div>
+          <h6 class="text-success">Compañeros de paseo:</h6>
+          <div class="d-flex flex-row overflow-auto gap-4 pb-3">
+            <div class="text-center">
+              <img src="../../Assets/img/Labrador.jfif" class="rounded-circle border mb-2" width="80" height="80" alt="Perro">
+              <p class="mb-0">Rocky</p>
+            </div>
+            <div class="text-center">
+              <img src="../../Assets/img/BorderCollie.jfif" class="rounded-circle border mb-2" width="80" height="80" alt="Perro">
+              <p class="mb-0">Luna</p>
+            </div>
+            <div class="text-center">
+              <img src="../../Assets/img/Labrador.jfif" class="rounded-circle border mb-2" width="80" height="80" alt="Perro">
+              <p class="mb-0">Toby</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paseador 2 -->
+      <div class="card mb-4 shadow-sm">
+        <div class="card-body">
+          <div class="d-flex align-items-center mb-3">
+            <img src="../../Assets/img/walker1.jpg" class="rounded-circle me-3" width="200" height="200" alt="Paseador">
+            <div>
+              <h5 class="mb-0">Kavu</h5>
+              <small class="text-muted">Experiencia: 5 años</small>
+            </div>
+          </div>
+
+          
+          <h6 class="text-success">Compañeros de paseo:</h6>
+          <div class="d-flex flex-row overflow-auto gap-4 pb-3">
+            <div class="text-center">
+              <img src="../../Assets/img/Caniche.jfif" class="rounded-circle border mb-2" width="80" height="80" alt="Perro">
+              <p class="mb-0">Mora</p>
+            </div>
+            <div class="text-center">
+              <img src="../../Assets/img/BorderCollie.jfif" class="rounded-circle border mb-2" width="80" height="80" alt="Perro">
+              <p class="mb-0">Zeus</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+    <!-- FOOTER -->
   <footer id="smartFooter" class="smart-footer">
     <p>
-      <a href="https://www.instagram.com/la_cucha_de_chimuela/" target="_self">Nuestras redes</a>
+      <a href="https://www.instagram.com/la_cucha_de_chimuela" target="_self">
+        Nuestras redes
+      </a>
     </p>
   </footer>
 
   <!-- JS -->
   <script>
-    // Footer que aparece al mover mouse / tocar pantalla / scrollear
+    // Footer inteligente
     const footer = document.getElementById('smartFooter');
     let hideTimeout;
 
