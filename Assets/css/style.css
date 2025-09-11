@@ -51,15 +51,34 @@ body {
   justify-content: center;
   align-items: center;
     padding-bottom: 60px;
+  font-family: 'Roboto Slab', serif;
+  
 }
+
+/* Texto normal (párrafos) → Roboto Slab */
+p, small {
+  font-family: 'Roboto Slab', serif;
+  
+}
+
+/* Títulos, subtítulos, links, navbar, botones → Story Script */
+h1, h2, h3, h4, h5, h6,
+.navbar, .nav-link, .btn, footer, strong {
+  font-family: 'Story Script', cursive;
+  font-weight: normal;
+text-shadow: #0000002b 1px 1px 2px;
+}
+
+
 
 /* ===========================
    HERO
 =========================== */
 .hero {
+    min-width: 80vh; 
   background: rgba(66, 32, 10, 0.25);
   color: #00ccff;
-  padding: 100px 200px;
+  padding: 60px 20px;
   text-align: center;
 }
 
@@ -67,6 +86,7 @@ body {
    WALKERS CAROUSEL
 =========================== */
 .walker-carousel {
+  
   display: flex;
   overflow-x: auto;
   gap: 20px;
@@ -96,7 +116,7 @@ body {
   border: none;
   padding: 10px 15px;
   font-weight: bold;
-  border-radius: 50%;
+  border-radius: 10%;
   cursor: pointer;
 }
 
