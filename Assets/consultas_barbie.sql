@@ -1,3 +1,5 @@
+
+
 USE manadas
 
 SELECT * FROM usuarios;
@@ -65,4 +67,10 @@ FROM mascota
 INNER JOIN usuarios
     ON mascota.id_dueno = usuarios.id_usuario;
 
+Select nombre, apellido from usuarios where nombre = 'Juan';
 
+Select nombre from usuarios where id_usuario > 1 and id_usuario < 20;
+
+UPDATE usuarios SET telefono = '1122334455' WHERE id_usuario = 3;
+
+SELECT usuarios.nombre, usuarios.apellido FROM usuarios INNER JOIN mascota on mascota.id_dueno = usuarios.id_usuario ORDER BY id_dueno DESC;
