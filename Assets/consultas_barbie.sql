@@ -73,4 +73,25 @@ Select nombre from usuarios where id_usuario > 1 and id_usuario < 20;
 
 UPDATE usuarios SET telefono = '1122334455' WHERE id_usuario = 3;
 
-SELECT usuarios.nombre, usuarios.apellido FROM usuarios INNER JOIN mascota on mascota.id_dueno = usuarios.id_usuario ORDER BY id_dueno DESC;
+SELECT usuarios.nombre, usuarios.apellido, mascota.nombre AS nombre_mascota 
+FROM usuarios 
+INNER JOIN mascota on mascota.id_dueno = usuarios.id_usuario ORDER BY id_dueno DESC;
+
+DELETE FROM usuarios WHERE id_usuario = 20;
+
+SELECT 
+  m.id_mascota,
+  m.nombre        AS NombreMascota,
+  u.id_usuario,
+  u.nombre        AS NombreDueño,
+  u.apellido
+FROM mascota AS m
+INNER JOIN usuarios AS u
+  ON m.id_dueno = u.id_usuario
+WHERE m.raza = 'Mestizo';
+
+Select usuarios.nombre as Nombre, mascota.nombre as Nombre_Perro FROM usuarios
+INNER JOIN mascota on usuarios.id_usuario = mascota.id_dueno
+where tamano = 'grande';
+
+DESCRIBE mascota;
