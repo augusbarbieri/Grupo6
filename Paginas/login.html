@@ -34,6 +34,8 @@
         <div class="card-body p-4">
           <h3 class="text-center mb-4">Login</h3>
 
+          <div id="loginMessage" class="alert d-none" role="alert"></div>
+
           <!-- Usuario -->
           <div class="mb-3">
             <label for="usuario" class="form-label">Usuario</label>
@@ -89,6 +91,16 @@
   window.addEventListener('mousemove', showFooter);
   window.addEventListener('scroll', showFooter);
   window.addEventListener('touchstart', showFooter);
+
+  // Mensaje de registro exitoso
+  const loginParams = new URLSearchParams(window.location.search);
+  const loginMessage = document.getElementById('loginMessage');
+  if (loginParams.has('registered')) {
+    loginMessage.textContent = loginParams.get('registered');
+    loginMessage.classList.remove('d-none');
+    loginMessage.classList.add('alert-success');
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
 </script>
 
 <!-- Bootstrap JS -->
