@@ -1,72 +1,86 @@
 <?php
 // 1. Incluimos nuestros archivos
 include "conexion.php";
-include "sesion.php"; // Asumimos que sesion.php está en la misma carpeta
+include "sesion.php"; // session_start() ya está aquí
 
-$conn = conectarBDManadas();
+// Obtener y limpiar entradas
+$nombre     = trim($_POST['nombre'] ?? '');
+$apellido   = trim($_POST['apellido'] ?? '');
+$email      = trim($_POST['email'] ?? '');
+$telefono   = trim($_POST['telefono'] ?? '');
+$direccion  = trim($_POST['direccion'] ?? '');
+$password   = $_POST['password'] ?? '';
+$password_r = $_POST['password_r'] ?? '';
 
+// Validaciones básicas
+if ($nombre === '' || $apellido === '' || $email === '' || $password === '' || $password_r === '') {
+    echo 'Faltan campos obligatorios. <a href="../Paginas/Register.html">Volver</a>';
+    exit();
+}
 
-// 2. Obtenemos los datos por POST
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$email = $_POST['email'];
-$telefono = $_POST['telefono'];
-$direccion = $_POST['direccion'];
-$password = $_POST['password'];
-$password_r = $_POST['password_r'];
+if ($password !== $password_r) {
+    echo 'Las contraseñas no coinciden. <a href="../Paginas/Register.html">Volver</a>';
+    exit();
+}
 
-// = = = = = INICIO DE CAMBIOS (Manejo de Archivo) = = = = =
+// Preparar ruta de uploads (usar ruta absoluta en servidor)
+$upload_dir = __DIR__ . '/../uploads/perfiles/';
+if (!is_dir($upload_dir)) {
+    mkdir($upload_dir, 0755, true);
+}
 
-$path_imagen_bd = "uploads/perfiles/default.png"; // Ruta por defecto si no sube imagen
-
-// Verificamos si se envió un archivo y si no hubo errores
-if (isset($_FILES["img"]) && $_FILES["img"]["error"] == 0) {
-
-    $directorio_destino = "../uploads/perfiles/"; // Asegúrate que esta carpeta exista y tenga permisos
+$path_imagen_bd = "uploads/perfiles/default.png"; // por defecto
+if (isset($_FILES["img"]) && $_FILES["img"]["error"] === UPLOAD_ERR_OK) {
     $nombre_original = basename($_FILES["img"]["name"]);
     $extension = strtolower(pathinfo($nombre_original, PATHINFO_EXTENSION));
+    $allowed = ['jpg','jpeg','png','webp','gif'];
+    if (!in_array($extension, $allowed)) {
+        echo 'Tipo de archivo no permitido. <a href="../Paginas/Register.html">Volver</a>';
+        exit();
+    }
+    // Limitar tamaño ejemplo 5MB
+    if ($_FILES["img"]["size"] > 5 * 1024 * 1024) {
+        echo 'Imagen demasiado grande. <a href="../Paginas/Register.html">Volver</a>';
+        exit();
+    }
 
-    // Creamos un nombre único para evitar sobreescribir archivos
-    $nombre_unico = uniqid() . '.' . $extension;
-    $path_completo = $directorio_destino . $nombre_unico;
+    $nombre_unico = uniqid('pf_', true) . '.' . $extension;
+    $path_completo = $upload_dir . $nombre_unico;
 
-    // (Aquí podrías agregar validaciones de tamaño y tipo de archivo como en tu upload.php)
-
-    // Movemos el archivo de la carpeta temporal a nuestro destino
     if (move_uploaded_file($_FILES["img"]["tmp_name"], $path_completo)) {
-        // Si se subió con éxito, actualizamos la ruta que irá a la BD
-        $path_imagen_bd = "uploads/perfiles/" . $nombre_unico;
+        $path_imagen_bd = 'uploads/perfiles/' . $nombre_unico; // ruta relativa para guardar en BD
     } else {
-        // Opcional: Manejar error si no se pudo mover el archivo
-        echo "Hubo un error al mover la imagen de perfil, pero se creará el usuario con la imagen por defecto.";
+        // continuar con imagen por defecto
     }
 }
-// = = = = = FIN DE CAMBIOS (Manejo de Archivo) = = = = =
 
+// Conectar DB
+$conn = conectarBDManadas();
+if (!$conn) {
+    echo 'Error de conexión a la base de datos.';
+    exit();
+}
 
-// 3. Validamos la contraseña (sin cambios)
-if ($password == $password_r) {
-
-    $conn = conectarBDManadas();
-    $resVerEmail = verficarEmail($conn, $email);
-
-    if ($resVerEmail != NULL && $resVerEmail->num_rows == 0) {
-
-        // = = = = = INICIO DE CAMBIO = = = = =
-        // 4. Pasamos la $path_imagen_bd (la nueva o la default) a la función
-        $filasAfectadas = agregarUsuario($conn, $nombre, $apellido, $email, $password, $telefono, $direccion, $path_imagen_bd);
-        // = = = = = FIN DE CAMBIO = = = = =
-
-        if ($filasAfectadas > 0) {
-            crearSesion('email', $email);
-        } else {
-            echo 'Hubo un error al crear la cuenta. <a href="../Paginas/Register.html">Vuelva a intentarlo</a>.<br/>';
-        }
-    } else {
-        echo 'El email ya se encuentra registrado. <a href="../Paginas/Register.html">Vuelva a intentarlo</a>.<br/>';
-    }
-
+// Verificar email
+$resVerEmail = verficarEmail($conn, $email);
+if ($resVerEmail !== null && $resVerEmail->num_rows > 0) {
+    echo 'El email ya se encuentra registrado. <a href="../Paginas/Register.html">Volver</a>';
     cerrarBDConexion($conn);
-} else {
-    echo 'Las contraseñas no coinciden. <a href="../Paginas/Register.html">Vuelva a intentarlo</a>.<br/>';
+    exit();
 }
+
+// Hashear contraseña
+$password_hashed = password_hash($password, PASSWORD_DEFAULT);
+
+// Insertar usuario
+$filasAfectadas = agregarUsuario($conn, $nombre, $apellido, $email, $password_hashed, $telefono, $direccion, $path_imagen_bd);
+
+if ($filasAfectadas > 0) {
+    // iniciar sesión y redirigir
+    crearSesion('email', $email);
+} else {
+    echo 'Hubo un error al crear la cuenta. <a href="../Paginas/Register.html">Volver</a>';
+}
+
+cerrarBDConexion($conn);
+?>
