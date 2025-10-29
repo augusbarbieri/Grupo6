@@ -7,17 +7,43 @@ session_start();
  * Función para crear la sesión después del login/registro.
  * Recibe la clave (generalmente 'email') y el valor (el email del usuario).
  */
-function crearSesion($clave, $valor)
+/**
+ * Crear sesión y redirigir según el rol del usuario.
+ *
+ * @param string $clave  Nombre de la variable de sesión (ej. 'email')
+ * @param string $valor  Valor a guardar (ej. el email)
+ * @param string $role   Rol del usuario: 'usuario'|'paseador'|'admin' (case-insensitive)
+ */
+function crearSesion($clave, $valor, $role = 'usuario', $user_id = null, $name = null, $img = null)
 {
-    // 1. Guardamos el email del usuario en la variable de sesión.
-    //    Esto lo "recuerda" el servidor para futuras visitas.
+    // Guardamos el email (o la clave que se indique) y el rol en la sesión.
     $_SESSION[$clave] = $valor;
+    $_SESSION['role'] = strtolower($role);
 
-    // 2. Redireccionamos al usuario a su página principal.
-    //    Usamos '../' para subir un nivel desde la carpeta 'php/'
-    //    y luego entrar a 'Paginas/Usuario/'.
-    header("Location: ../Paginas/Usuario/landingUsuario.html");
-    exit(); // Es buena práctica llamar a exit() después de un header Location.
+    // Guardar id y datos básicos en sesión si se pasan
+    if ($user_id !== null) {
+        $_SESSION['user_id'] = $user_id;
+    }
+    if ($name !== null) {
+        $_SESSION['user_name'] = $name;
+    }
+    if ($img !== null) {
+        $_SESSION['user_img'] = $img;
+    }
+
+    // Redirigimos según el rol. Rutas relativas desde la carpeta php/ hacia paginas/...
+    $roleLower = strtolower($role);
+    if ($roleLower === 'admin' || $roleLower === 'administrador') {
+        header("Location: ../paginas/admin/inicio.php");
+        exit();
+    } elseif ($roleLower === 'paseador') {
+        header("Location: ../paginas/paseador/inicio.php");
+        exit();
+    } else {
+        // Por defecto, dueño de mascota
+        header("Location: ../paginas/dueno/inicio.php");
+        exit();
+    }
 }
 
 /**
@@ -33,7 +59,7 @@ function cerrarSesion($clave)
     session_destroy();
 
     // Redirecciona a la página de login.
-    header("Location: ../Paginas/login.html");
+    header("Location: ../paginas/login.html");
     exit();
 }
 
@@ -52,7 +78,7 @@ function controlarSesion()
     } else {
         // Si no existe, significa que el usuario no está logueado.
         // Lo redirigimos a la página de login.
-        header("Location: ../Paginas/login.html");
+        header("Location: ../paginas/inicio-sesion.html");
         exit();
     }
     return $sesionUsuario;
