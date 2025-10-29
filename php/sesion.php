@@ -59,7 +59,7 @@ function cerrarSesion($clave)
     session_destroy();
 
     // Redirecciona a la página de login.
-    header("Location: ../paginas/login.html");
+    header("Location: ../paginas/inicio-sesion.html");
     exit();
 }
 
