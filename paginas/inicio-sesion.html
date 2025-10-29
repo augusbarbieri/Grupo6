@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Manadas</title>
+  <!-- Bootstrap CSS -->
+  <link 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" 
+    rel="stylesheet">
+  <link rel="stylesheet" href="../Assets/css/style.css">
+
+</head>
+
+<body>
+<!-- HEADER con Navbar -->
+<header class="mb-auto w-100 bg-primary text-white">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="container-fluid">
+      <!-- Logo + título -->
+      <a class="navbar-brand d-flex align-items-center" href="login.html">
+        <img src="../Assets/img/Logo.png" alt="Logo" class="site-logo me-2" style="height:50px;">
+        <span>Manadas</span>
+      </a>   
+  </nav>
+  
+</header>
+
+<!-- MAIN -->
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h3 class="text-center mb-4">Login</h3>
+
+          <!-- Usuario -->
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuario" placeholder="Ingresá tu usuario">
+          </div>
+
+          <!-- Contraseña -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Ingresá tu contraseña">
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex flex-column align-items-center">
+            <a href="Usuario/landingUsuario.html" class="btn btn-primary mb-2">Ingresar</a>
+            <a href="Admin/landingAdmin.html" class="btn btn-primary mb-2">Ingresar Admin</a>
+            <a href="Paseador/landingPaseador.html" class="btn btn-primary">Ingresar Paseador</a>
+
+             <!-- Link a login -->
+          <p class="text-center mt-3">
+            ¿No tenés cuenta? <a href="Register.html" class="fw-bold">Register</a>
+          </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+ <!-- FOOTER -->
+  <footer id="smartFooter" class="smart-footer">
+    <p>
+      <a href="https://www.instagram.com/la_cucha_de_chimuela" target="_self">
+        Nuestras redes
+      </a>
+    </p>
+  </footer>
+
+
+<!-- JS -->
+<script>
+  // Footer inteligente
+  const footer = document.getElementById('smartFooter');
+  let hideTimeout;
+
+  function showFooter() {
+    footer.classList.add('show');
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(() => footer.classList.remove('show'), 2500);
+  }
+
+  window.addEventListener('mousemove', showFooter);
+  window.addEventListener('scroll', showFooter);
+  window.addEventListener('touchstart', showFooter);
+</script>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
