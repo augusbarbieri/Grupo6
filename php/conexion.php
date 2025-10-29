@@ -52,12 +52,12 @@ function verficarEmail($conn, $email)
  * 1. Añadimos $img_path como parámetro.
  * 2. Usamos $img_path en la consulta INSERT.
  */
-function agregarUsuario($conn, $nombre, $apellido, $email, $password, $telefono, $direccion, $path_imagen)
+function agregarUsuario($conn, $nombre, $apellido, $email, $password, $telefono, $direccion, $path_img)
 {
     if ($conn) {
-        $sql = "INSERT INTO usuarios (nombre, apellido, email, password, telefono, direccion, imagen) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO usuarios (nombre, apellido, email, password, telefono, direccion, img, fecha_registro) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssss", $nombre, $apellido, $email, $password, $telefono, $direccion, $path_imagen);
+        $stmt->bind_param("sssssss", $nombre, $apellido, $email, $password, $telefono, $direccion, $path_img);
         $stmt->execute();
         return $stmt->affected_rows;
     }
