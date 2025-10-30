@@ -43,7 +43,7 @@ function cerrarSesion($clave)
 {
     unset($_SESSION[$clave]);
     session_destroy();
-    header("Location: ../auth/login.html");
+    header("Location: ../paginas/inicio-sesion.html");
     exit();
 }
 

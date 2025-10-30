@@ -17,7 +17,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <!-- Logo + título -->
-  <a class="navbar-brand d-flex align-items-center" href="inicio-sesion.html">
+      <a class="navbar-brand d-flex align-items-center" href="login.html">
         <img src="../Assets/img/Logo.png" alt="Logo" class="site-logo me-2" style="height:50px;">
         <span>Manadas</span>
       </a>   
@@ -25,27 +25,44 @@
   
 </header>
 
-          <!-- FORM de login integrado (un solo formulario para los 3 roles) -->
-          <form action="../php/login.php" method="post" class="w-100">
-            <div class="mb-3">
-              <label for="email" class="form-label">Email</label>
-              <input type="email" name="email" class="form-control" id="email" placeholder="Ingresá tu email" required>
-            </div>
+<!-- MAIN -->
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
 
-            <div class="mb-3">
-              <label for="password" class="form-label">Contraseña</label>
-              <input type="password" name="password" class="form-control" id="password" placeholder="Ingresá tu contraseña" required>
-            </div>
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h3 class="text-center mb-4">Login</h3>
 
-            <div class="d-flex flex-column align-items-center">
-              <button type="submit" class="btn btn-primary mb-2 w-100">Ingresar</button>
-            </div>
+          <!-- Usuario -->
+          <div class="mb-3">
+            <label for="usuario" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="usuario" placeholder="Ingresá tu usuario">
+          </div>
 
-            <p class="text-center mt-3">
-              ¿No tenés cuenta? <a href="registro.html" class="fw-bold">Registrarse</a>
-            </p>
-          </form>
-          
+          <!-- Contraseña -->
+          <div class="mb-3">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" placeholder="Ingresá tu contraseña">
+          </div>
+
+          <!-- Botones -->
+          <div class="d-flex flex-column align-items-center">
+            <a href="Usuario/landingUsuario.html" class="btn btn-primary mb-2">Ingresar</a>
+            <a href="Admin/landingAdmin.html" class="btn btn-primary mb-2">Ingresar Admin</a>
+            <a href="Paseador/landingPaseador.html" class="btn btn-primary">Ingresar Paseador</a>
+
+             <!-- Link a login -->
+          <p class="text-center mt-3">
+            ¿No tenés cuenta? <a href="Register.html" class="fw-bold">Register</a>
+          </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
  <!-- FOOTER -->
   <footer id="smartFooter" class="smart-footer">

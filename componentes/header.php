@@ -67,7 +67,8 @@ if (empty($displayName)) {
     $displayName = $email ?: 'Usuario';
 }
 if (empty($displayImg)) {
-    $displayImg = $basePath . 'assets/img/default.png';
+    // Use repository-correct casing for Assets folder to avoid case-sensitivity issues on Linux
+    $displayImg = $basePath . 'Assets/img/default.png';
 }
 
 // Debug
@@ -105,7 +106,7 @@ if ($role === 'admin') {
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand d-flex align-items-center" href="<?= $homeLink ?>">
-                <img src="<?= $basePath ?>assets/img/logo.png" alt="Logo" class="site-logo me-2" style="height:40px;">
+                <img src="<?= $basePath ?>Assets/img/logo.png" alt="Logo" class="site-logo me-2" style="height:40px;">
                 <span>Manadas</span>
             </a>
 

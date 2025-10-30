@@ -34,7 +34,7 @@ if ($res && $res->num_rows === 1) {
         $name = trim(($row['nombre'] ?? '') . ' ' . ($row['apellido'] ?? '')) ?: null;
         crearSesion('email', $email, 'admin', $id, $name, null);
     } else {
-        echo 'Credenciales inválidas. <a href="login.html">Volver</a>';
+        echo 'Credenciales inválidas. <a href="../paginas/inicio-sesion.html">Volver</a>';
         exit();
     }
 }
@@ -72,7 +72,7 @@ if (!$res) {
             crearSesion('email', $email, 'paseador', $id, $name, $img);
             exit();
         }
-        echo 'Credenciales inválidas. <a href="login.html">Volver</a>';
+        echo 'Credenciales inválidas. <a href="../paginas/inicio-sesion.html">Volver</a>';
         exit();
     }
 }
@@ -91,7 +91,7 @@ if ($res && $res->num_rows === 1) {
         $img = $row['img'] ?? null;
         crearSesion('email', $email, 'usuario', $id, $name, $img);
     } else {
-        echo 'Credenciales inválidas. <a href="login.html">Volver</a>';
+        echo 'Credenciales inválidas. <a href="../paginas/inicio-sesion.html">Volver</a>';
         exit();
     }
 }

@@ -4,14 +4,13 @@ const nombreServidor = "localhost";
 const nombreUsuario = "root";
 const passwordBaseDeDatos = "";
 const nombreBaseDeDatos = "manadas";
-// ... (función conectarBDManadas() y cerrarBDConexion() sin cambios) ...
 
 function conectarBDManadas()
 {
     $host = "localhost";
     $user = "root";
     $pass = "";
-    $db = "manadas"; // Make sure this database exists
+    $db = "manadas";
 
     try {
         $conn = new mysqli($host, $user, $pass, $db);
@@ -33,8 +32,6 @@ function cerrarBDConexion($conn)
 }
 
 // --- QUERIES (Consultas) ---
-
-// verficarEmail() (sin cambios)
 function verficarEmail($conn, $email)
 {
     if ($conn) {
@@ -47,11 +44,6 @@ function verficarEmail($conn, $email)
     return null;
 }
 
-/**
- * = = = = = INICIO DE CAMBIOS = = = = =
- * 1. Añadimos $img_path como parámetro.
- * 2. Usamos $img_path en la consulta INSERT.
- */
 function agregarUsuario($conn, $nombre, $apellido, $email, $password, $telefono, $direccion, $path_img)
 {
     if ($conn) {
@@ -63,4 +55,3 @@ function agregarUsuario($conn, $nombre, $apellido, $email, $password, $telefono,
     }
     return 0;
 }
-// = = = = = FIN DE CAMBIOS = = = = =

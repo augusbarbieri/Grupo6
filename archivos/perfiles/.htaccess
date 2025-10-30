@@ -1,0 +1,16 @@
+AddType image/png .png
+AddType image/jpeg .jpg
+AddType image/jpeg .jpeg
+AddType image/gif .gif
+AddType image/webp .webp
+
+# Prevent directory listing
+Options -Indexes
+
+# Allow image access from any domain
+Header set Access-Control-Allow-Origin "*"
+
+# Cache control for images
+<FilesMatch "\.(jpg|jpeg|png|gif|webp)$">
+    Header set Cache-Control "max-age=31536000"
+</FilesMatch>
