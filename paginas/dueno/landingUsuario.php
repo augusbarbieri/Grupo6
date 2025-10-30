@@ -6,7 +6,7 @@
   <title>Manadas - Usuario</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <link rel="stylesheet" href="../../Assets/css/style.css">
+  <link rel="stylesheet" href="../../Assets/css/style.css?v=<?php echo time(); ?>">
 </head>
 
   <!-- HEADER con Navbar -->
