@@ -1,100 +1,75 @@
 <?php
-require_once "db.php"; // Ahora apunta al archivo local que redirige a conexion.php
+require_once "db.php";
 require_once "session.php";
 
+// Validar que el método sea POST
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405); // Method Not Allowed
+    echo 'Método no permitido.';
+    exit();
+}
+
+// Sanitizar y validar entrantes
 $email = trim($_POST['email'] ?? '');
 $password = $_POST['password'] ?? '';
 
-if ($email === '' || $password === '') {
-    echo 'Faltan campos. <a href="../paginas/inicio-sesion.html">Volver al login</a>';
+if (empty($email) || empty($password)) {
+    // Redirección con mensaje de error
+    header("Location: ../paginas/inicio-sesion.html?error=campos_vacios");
     exit();
 }
 
 $conn = conectarBDManadas();
 if (!$conn) {
-    echo 'Error de conexión a la base de datos.';
+    // Es mejor no dar detalles del error de BD al usuario final
+    header("Location: ../paginas/inicio-sesion.html?error=interno");
     exit();
 }
 
-function verificar_password($plain, $stored)
-{
-    return password_verify($plain, $stored) || $plain === $stored;
-}
+// Búsqueda unificada de usuarios en las tres tablas
+$sql = "
+    (SELECT id_admin AS id, email, password, nombre, apellido, NULL AS img, 'admin' AS role FROM admin WHERE email = ?)
+    UNION ALL
+    (SELECT id_paseador AS id, email, password, nombre, apellido, img, 'paseador' AS role FROM paseador WHERE email = ?)
+    UNION ALL
+    (SELECT id_usuario AS id, email, password, nombre, apellido, img, 'usuario' AS role FROM usuarios WHERE email = ?)
+    LIMIT 1
+";
 
-// 1) Buscar en tabla admin
-$sql = "SELECT * FROM admin WHERE email = ? LIMIT 1";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $email);
+// Vincular el mismo email a los tres placeholders
+$stmt->bind_param('sss', $email, $email, $email);
 $stmt->execute();
 $res = $stmt->get_result();
+
 if ($res && $res->num_rows === 1) {
     $row = $res->fetch_assoc();
-    if (verificar_password($password, $row['password'])) {
-        $id = $row['id_admin'] ?? null;
-        $name = trim(($row['nombre'] ?? '') . ' ' . ($row['apellido'] ?? '')) ?: null;
-        crearSesion('email', $email, 'admin', $id, $name, null);
-    } else {
-        echo 'Credenciales inválidas. <a href="../paginas/inicio-sesion.html">Volver</a>';
-        exit();
-    }
-}
 
-// 2) Buscar en tabla paseador
-$sql = "SELECT * FROM paseador WHERE TRIM(email) = TRIM(?) LIMIT 1";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $email);
-$stmt->execute();
-$res = $stmt->get_result();
-
-// Debug: mostrar búsqueda en tabla paseador
-echo "Buscando paseador con email: " . htmlspecialchars($email) . "<br>";
-if (!$res) {
-    echo "Error en la consulta de paseador<br>";
-} else {
-    echo "Encontradas " . $res->num_rows . " filas en tabla paseador<br>";
-    if ($res->num_rows === 1) {
-        $row = $res->fetch_assoc(); // Guardamos el resultado una sola vez
-        echo "Password almacenada: " . htmlspecialchars($row['password']) . "<br>";
-        echo "Verificación de password: " . (verificar_password($password, $row['password']) ? "OK" : "FALLO") . "<br>";
-
-        if (verificar_password($password, $row['password'])) {
-            // Usamos los datos del $row que ya tenemos
-            $id = $row['id_paseador'] ?? null;
-            $name = trim(($row['nombre'] ?? '') . ' ' . ($row['apellido'] ?? ''));
-            $img = $row['img'] ?? null;
-
-            // Debug: mostrar los datos que vamos a usar para la sesión
-            echo "Debug - Datos de sesión:<br>";
-            echo "ID: " . ($id ?? 'null') . "<br>";
-            echo "Name: " . ($name ?? 'null') . "<br>";
-            echo "Image: " . ($img ?? 'null') . "<br>";
-
-            crearSesion('email', $email, 'paseador', $id, $name, $img);
-            exit();
-        }
-        echo 'Credenciales inválidas. <a href="../paginas/inicio-sesion.html">Volver</a>';
-        exit();
-    }
-}
-
-// 3) Buscar en tabla usuarios
-$sql = "SELECT * FROM usuarios WHERE email = ? LIMIT 1";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param('s', $email);
-$stmt->execute();
-$res = $stmt->get_result();
-if ($res && $res->num_rows === 1) {
-    $row = $res->fetch_assoc();
-    if (verificar_password($password, $row['password'])) {
-        $id = $row['id_usuario'] ?? null;
-        $name = trim(($row['nombre'] ?? '') . ' ' . ($row['apellido'] ?? '')) ?: null;
+    // Usar password_verify para comparar contraseñas hasheadas
+    if (password_verify($password, $row['password'])) {
+        $id = $row['id'];
+        $name = trim(($row['nombre'] ?? '') . ' ' . ($row['apellido'] ?? ''));
         $img = $row['img'] ?? null;
-        crearSesion('email', $email, 'usuario', $id, $name, $img);
-    } else {
-        echo 'Credenciales inválidas. <a href="../paginas/inicio-sesion.html">Volver</a>';
+        $role = $row['role'];
+
+        // Crear la sesión y redirigir
+        crearSesion('email', $email, $role, $id, $name, $img);
+
+        // Redirección post-login según el rol
+        $redirect_url = '../paginas/inicio-sesion.html?error=rol_desconocido'; // Fallback
+        if ($role === 'admin') {
+            $redirect_url = '../paginas/admin/inicio.php';
+        } elseif ($role === 'paseador') {
+            $redirect_url = '../paginas/paseador/inicio.php';
+        } elseif ($role === 'usuario') {
+            $redirect_url = '../paginas/usuarios/inicio.php';
+        }
+        header("Location: " . $redirect_url);
         exit();
     }
 }
 
+// Si las credenciales son inválidas o el usuario no existe
 cerrarBDConexion($conn);
-echo 'Usuario no encontrado. <a href="../paginas/registro.html">Registrarse</a> o <a href="../paginas/inicio-sesion.html">Volver al login</a>';
+header("Location: ../paginas/inicio-sesion.html?error=credenciales_invalidas");
+exit();

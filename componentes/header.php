@@ -92,11 +92,11 @@ if ($role === 'admin') {
         ['text' => 'Mi Perfil', 'link' => $basePath . 'paginas/paseador/perfil.php']
     ];
 } else {
-    // 'dueno' es la carpeta en español para los usuarios/propietarios
-    $homeLink = $basePath . 'paginas/dueno/inicio.php';
+    // Carpeta 'usuarios' para dueños de mascotas
+    $homeLink = $basePath . 'paginas/usuarios/inicio.php';
     $menuItems = [
-        ['text' => 'Mis Mascotas', 'link' => $basePath . 'paginas/dueno/mascotas.php'],
-        ['text' => 'Mi Perfil', 'link' => $basePath . 'paginas/dueno/perfil.php']
+        ['text' => 'Mis Mascotas', 'link' => $basePath . 'paginas/usuarios/mascotas.php'],
+        ['text' => 'Mi Perfil', 'link' => $basePath . 'paginas/usuarios/perfil.php']
     ];
 }
 ?>
