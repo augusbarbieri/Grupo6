@@ -36,6 +36,13 @@ CREATE TABLE `admin` (
   `estado` enum('activo','inactivo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Volcado de datos para la tabla `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `nombre`, `apellido`, `email`, `password`, `estado`) VALUES
+(1, 'Admin', 'User', 'admin@manadas.com', 'admin123', 'activo');
+
 -- --------------------------------------------------------
 
 --
