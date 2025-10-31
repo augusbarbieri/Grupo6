@@ -1,0 +1,166 @@
+  <!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis Mascotas</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="../../Assets/css/style.css?v=<?php echo time(); ?>">
+
+  
+</head>
+<body>
+  <!-- HEADER con Navbar -->
+  <header class="mb-auto w-100 bg-pri mary text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <!-- Logo + título -->
+        <a class="navbar-brand d-flex align-items-center" href="landingUsuario.html">
+          <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-2" style="height:50px;">
+          <span>Manadas - Usuario</span>
+        </a>
+
+        <!-- Botón hamburguesa -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuarioMisManadas.html">Mis Manadas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuarioMisMascotas.html">Mis Mascotas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuario.html">Mi Perfil</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+<!-- Hero -->
+<section class="hero text-center text-white bg-dark py-7 mt-4"> 
+  <div class="container">
+    <h1 class="display-4 fw-bold">Mis mascotas</h1>
+    <p class="lead">🐶 Aca estan tu perritos 🐶</p>
+  </div>
+</section>
+
+<div class="ms-3 me-3 mt-5">
+  <div class="d-flex align-items-center mb-4">
+    <a href="formMascota.html" class="btn btn-primary ms-auto">Agregar Mascota</a>
+  </div>
+
+  <!-- Sección Mascotas -->
+<div class="mascotas-container">
+  <h2 class="text-center mb-4">Mis Mascotas</h2>
+  <div class="row g-4">
+    <!-- Mascota 1 -->
+    <div class="col-md-4">
+      <div class="mascota-card">
+        <img src="../../Assets/img/Labrador.jfif" alt="Foto de perfil"
+          class="rounded-circle border d-block mx-auto" width="150" height="150"> 
+        <input type="file" class="form-control mb-2" accept="image/*">
+        <input type="text" class="form-control mb-2" placeholder="Nombre">
+        
+        <!-- Enum de razas -->
+        <select class="form-select">
+          <option value="">Selecciona la raza</option>
+          <option value="labrador">Labrador</option>
+          <option value="bulldog">Bulldog</option>
+          <option value="pastor">Pastor Alemán</option>
+          <option value="beagle">Beagle</option>
+          <option value="caniche">Caniche</option>
+          <option value="mestizo">Mestizo</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Mascota 2 -->
+    <div class="col-md-4">
+      <div class="mascota-card">
+        <img src="../../Assets/img/BorderCollie.jfif" alt="Foto de perfil"
+          class="rounded-circle border d-block mx-auto" width="150" height="150"> 
+        <input type="file" class="form-control mb-2" accept="image/*">
+        <input type="text" class="form-control mb-2" placeholder="Nombre">
+
+        <select class="form-select">
+          <option value="">Selecciona la raza</option>
+          <option value="labrador">Labrador</option>
+          <option value="bulldog">Bulldog</option>
+          <option value="pastor">Pastor Alemán</option>
+          <option value="beagle">Beagle</option>
+          <option value="caniche">Caniche</option>
+          <option value="mestizo">Mestizo</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Mascota 3 -->
+    <div class="col-md-4">
+      <div class="mascota-card">
+        <img src="../../Assets/img/Caniche.jfif" alt="Foto de perfil"
+          class="rounded-circle border d-block mx-auto" width="150" height="150"> 
+        <input type="file" class="form-control mb-2" accept="image/*">
+        <input type="text" class="form-control mb-2" placeholder="Nombre">
+
+        <select class="form-select">
+          <option value="">Selecciona la raza</option>
+          <option value="labrador">Labrador</option>
+          <option value="bulldog">Bulldog</option>
+          <option value="pastor">Pastor Alemán</option>
+          <option value="beagle">Beagle</option>
+          <option value="caniche">Caniche</option>
+          <option value="mestizo">Mestizo</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- FOOTER: texto clickeable que aparece al mover el mouse -->
+  <footer id="smartFooter" class="smart-footer">
+    <p>
+      <a href="https://www.youtube.com/watch?v=LdHqXER258Y&ab_channel=ViralDoseofInternet" target="_self">Nuestas redes</a>
+    </p>
+  </footer>
+
+  <script>
+    // Preview de imagen al elegir archivo
+    document.querySelectorAll('input[type="file"][data-preview]').forEach(input => {
+      input.addEventListener('change', (e) => {
+        const file = e.target.files && e.target.files[0];
+        const previewId = e.target.getAttribute('data-preview');
+        const img = document.getElementById(previewId);
+        if (file && img) {
+          const reader = new FileReader();
+          reader.onload = () => img.src = reader.result;
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+
+    // Footer que aparece al mover mouse / tocar pantalla / scrollear
+    const footer = document.getElementById('smartFooter');
+    let hideTimeout;
+
+    function showFooter() {
+      footer.classList.add('show');
+      clearTimeout(hideTimeout);
+      // Oculta de nuevo después de 2.5s sin interacción
+      hideTimeout = setTimeout(() => footer.classList.remove('show'), 2500);
+    }
+
+    window.addEventListener('mousemove', showFooter);
+    window.addEventListener('scroll', showFooter);
+    window.addEventListener('touchstart', showFooter);
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

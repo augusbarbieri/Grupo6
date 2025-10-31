@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Mascota</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+    <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Tu CSS -->
+        <link rel="stylesheet" href="../../Assets/css/style.css?v=<?php echo time(); ?>">
+
+
+</head>
+<body>
+   <!-- HEADER con Navbar -->
+  <header class="mb-auto w-100 bg-primary text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-fluid">
+        <!-- Logo + título -->
+        <a class="navbar-brand d-flex align-items-center" href="landingUsuario.html">
+          <img src="../../Assets/img/logo.png" alt="Logo" class="site-logo me-2">
+          <span>Manadas - Usuario</span>
+        </a>
+
+        <!-- Botón hamburguesa -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuarioMisManadas.html">Mis Manadas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuarioMisMascotas.html">Mis Mascotas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="perfilUsuario.html">Mi Perfil</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+ <!-- Hero-->
+  <section class="hero">
+    <h1 class="display-4 fw-bold">Guarda cupo para tu proximo paseo</h1>
+    <p class="lead">Queres pasear con el paseador X</p>
+         <img src="../../Assets/img/walker1.jpg" class="rounded-circle border mb-3" width="200" height="200" padding = 60 >
+  </section>
+      <div class="container mt-5">
+    <h2 class="mb-4">Agregar Mascota</h2>
+    <form id="formMascota">
+      <!-- Nombre -->
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Pone el nombre de tu mascota</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+      </div>
+
+    
+      <!-- Botón -->
+      <div class="d-grid">
+        <a type="submit" class="btn btn-primary" href="landingUsuario.html">Agregar al paseo</a>
+      </div>
+    </form>
+  </div>
+  
+  </script>
+</body>
+</html>
