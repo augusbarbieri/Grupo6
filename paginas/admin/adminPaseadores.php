@@ -3,49 +3,51 @@ $basePath = '../../';
 include_once '../../componentes/header.php';
 ?>
 
+<?php
+$basePath = '../../';
+require_once '../../php/conexion.php';
+require_once '../../php/paseadores.php';
+
+// Conexión a la base de datos
+$conn = conectarBDManadas();
+$paseadores = obtenerPaseadores($conn);
+cerrarBDConexion($conn);
+?>
+
 <div class="ms-3 me-3 mt-5">
-    <div class="d-flex align-items-center mb-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0">Listado de Paseadores</h2>
-        <button type="button" class="btn btn-primary ms-auto" onclick="location.href='adminFormAddPaseador.php'">Agregar Paseador</button>
+        <a href="adminFormAddPaseador.php" class="btn btn-primary">Agregar Paseador</a>
     </div>
     <div class="table-responsive">
-        <table class="table w-auto ba" style="height: 150px;">
-
-            <thead class="bg-body-custom">
+        <table class="table table-striped table-hover">
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">DNI</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Telefono</th>
+                    <th scope="col">Teléfono</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Marcos</td>
-                    <td>Herrera</td>
-                    <td>33457698</td>
-                    <td>marcos.herrera@manadas.com</td>
-                    <td>+5491112345678</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>James</td>
-                    <td>Trinchero</td>
-                    <td>36726437</td>
-                    <td>james.trinchero@manadas.com</td>
-                    <td>+5491123456789</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Juan</td>
-                    <td>Gilerdo</td>
-                    <td>40227698</td>
-                    <td>juan.gilerdo@manadas.com</td>
-                    <td>+5491134567890</td>
-                </tr>
+                <?php if ($paseadores && $paseadores->num_rows > 0): ?>
+                    <?php while($row = $paseadores->fetch_assoc()): ?>
+                        <tr>
+                            <th scope="row"><?= htmlspecialchars($row['id']) ?></th>
+                            <td><?= htmlspecialchars($row['nombre']) ?></td>
+                            <td><?= htmlspecialchars($row['apellido']) ?></td>
+                            <td><?= htmlspecialchars($row['dni']) ?></td>
+                            <td><?= htmlspecialchars($row['mail']) ?></td>
+                            <td><?= htmlspecialchars($row['telefono']) ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="6" class="text-center">No hay paseadores registrados.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
