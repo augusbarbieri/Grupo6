@@ -1,53 +1,57 @@
 <?php
+require_once "../../auth/session.php";
+require_once "../../php/conexion.php";
+
+$email = controlarSesion();
+controlarRol('admin');
+
+$conn = conectarBDManadas();
+$sql = "SELECT id_usuario, nombre, apellido, email, telefono FROM usuarios";
+$result = $conn->query($sql);
+
+$clientes = [];
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        $clientes[] = $row;
+    }
+}
+cerrarBDConexion($conn);
+
 $basePath = '../../';
 include_once '../../componentes/header.php';
 ?>
 
-<div class="ms-3 me-3 mt-5">
-    <div class="d-flex align-items-center mb-4">
-        <h2 class="mb-4 text-start">Listado de Clientes</h2>
+<div class="admin-container">
+    <div class="admin-header">
+        <h1>Listado de Clientes</h1>
     </div>
-    <div class="table-responsive">
-        <table class="table w-auto" style="height: 150px;">
+    <div class="admin-table-container">
+        <table class="admin-table">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Mascotas</th>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Marcos</td>
-                    <td>Herrera</td>
-                    <td>33457698</td>
-                    <td>marcos.herrera@gmail.com</td>
-                    <td>+5491112345678</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>James</td>
-                    <td>Trinchero</td>
-                    <td>36726437</td>
-                    <td>james.trinchero@gmail.com</td>
-                    <td>+5491123456789</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Juan</td>
-                    <td>Gilerdo</td>
-                    <td>40227698</td>
-                    <td>juan.gilerdo@gmail.com</td>
-                    <td>+5491134567890</td>
-                    <td>2</td>
-                </tr>
+                <?php if (!empty($clientes)): ?>
+                    <?php foreach ($clientes as $cliente): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($cliente['id_usuario']) ?></td>
+                            <td><?= htmlspecialchars($cliente['nombre']) ?></td>
+                            <td><?= htmlspecialchars($cliente['apellido']) ?></td>
+                            <td><?= htmlspecialchars($cliente['email']) ?></td>
+                            <td><?= htmlspecialchars($cliente['telefono']) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5">No hay clientes registrados.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>
