@@ -1,0 +1,46 @@
+<?php
+$basePath = '../../';
+include_once '../../componentes/header.php';
+?>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Agregar Paseador</h2>
+    <form id="formPaseador" action="formPaseadorComplete.php" method="post">
+        <!-- Nombre -->
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre del paseador *</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+
+        <!-- Apellido -->
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido del paseador</label>
+            <input type="text" class="form-control" id="apellido" name="apellido">
+        </div>
+
+        <!-- DNI -->
+        <div class="mb-3">
+            <label for="dni" class="form-label">DNI del paseador</label>
+            <input type="number" class="form-control" id="dni" name="dni" required>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email del paseador</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+
+        <!-- Telefono -->
+        <div class="mb-3">
+            <label for="telefono" class="form-label">Teléfono del paseador</label>
+            <input type="tel" class="form-control" id="telefono" name="telefono" required>
+        </div>
+
+        <!-- Botón -->
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary">Agregar Paseador</button>
+        </div>
+    </form>
+</div>
+
+<?php include_once '../../componentes/footer.php'; ?>
