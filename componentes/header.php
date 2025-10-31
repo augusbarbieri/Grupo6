@@ -17,8 +17,8 @@ if ($isLoggedIn) {
     if ($role === 'admin') {
         $homeLink = $basePath . 'paginas/admin/inicio.php';
         $menuItems = [
-            ['text' => 'Paseadores', 'link' => $basePath . 'paginas/admin/paseadores.php'],
-            ['text' => 'Clientes', 'link' => $basePath . 'paginas/admin/clientes.php'],
+            ['text' => 'Paseadores', 'link' => $basePath . 'paginas/admin/adminPaseadores.php'],
+            ['text' => 'Clientes', 'link' => $basePath . 'paginas/admin/adminClientes.php'],
         ];
     } elseif ($role === 'paseador') {
         $homeLink = $basePath . 'paginas/paseador/inicio.php';
