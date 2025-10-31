@@ -8,7 +8,8 @@
     <!-- Bootstrap CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tu CSS -->
-        <link rel="stylesheet" href="../../Assets/css/style.css">
+        <link rel="stylesheet" href="../../Assets/css/style.css?v=<?php echo time(); ?>">
+
 
 </head>
 <body>
@@ -46,23 +47,29 @@
     </nav>
   </header>
 
-
-<!-- Hero-->
+ <!-- Hero-->
   <section class="hero">
-    <h1 class="display-4 fw-bold">Mascota guardada</h1>
-    <p class="lead">Volve a la pagina principal</p>
-       
+    <h1 class="display-4 fw-bold">Guarda cupo para tu proximo paseo</h1>
+    <p class="lead">Queres pasear con el paseador X</p>
+         <img src="../../Assets/img/walker1.jpg" class="rounded-circle border mb-3" width="200" height="200" padding = 60 >
   </section>
       <div class="container mt-5">
     <h2 class="mb-4">Agregar Mascota</h2>
     <form id="formMascota">
-    <!-- Botón -->
-      <div class="d-grid">
-        <a href="landingUsuario.html" class="btn btn-primary d-grid">Volver</a>
-      </div>
+      <!-- Nombre -->
       <div class="mb-3">
+        <label for="nombre" class="form-label">Pone el nombre de tu mascota</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
       </div>
-      
+
+    
+      <!-- Botón -->
+      <div class="d-grid">
+        <a type="submit" class="btn btn-primary" href="landingUsuario.html">Agregar al paseo</a>
+      </div>
+    </form>
+  </div>
+  
   </script>
 </body>
 </html>

@@ -2,16 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Paseador Agregado</title>
+    <title>Agregar Paseador</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
     <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Tu CSS -->
-        <link rel="stylesheet" href="../../Assets/css/style.css">
+      <link rel="stylesheet" href="../../Assets/css/style.css?v=<?php echo time(); ?>">
+
 
 </head>
-
 <body>
 
       <!-- HEADER con Navbar -->
@@ -47,20 +47,47 @@
         </nav>
     </header>
 
-<!-- Hero-->
-  <section class="hero">
-    <h1 class="display-4 fw-bold">Paseador Agregado</h1>
-       
-  </section>
-      <div class="container mt-5">
-    <form id="formMascota">
-    <!-- Botón -->
-      <div class="d-grid ">
-            <a href="landingAdmin.html" class="btn btn-primary d-grid ">Volver</a>
-      </div>
+  <div class="container mt-5">
+    <h2 class="mb-4">Agregar Paseador</h2>
+    <form id="formPaseador">
+      <!-- Nombre -->
       <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre del paseador *</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
       </div>
-      
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+      <!-- Apellido -->
+      <div class="mb-3">
+        <label for="apellido" class="form-label">Apellido del paseador</label>
+        <input type="text" class="form-control" id="apellido" name="apellido">
+      </div>
+
+      <!-- DNI -->
+      <div class="mb-3">
+        <label for="dni" class="form-label">DNI del paseador</label>
+        <input type="number" class="form-control" id="dni" name="dni" required>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label">Email del paseador</label>
+        <input type="email" class="form-control" id="email" name="email" required >
+      </div>
+
+      <!-- Telefono -->
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Teléfono del paseador</label>
+        <input type="tel" class="form-control" id="telefono" name="telefono" required >
+      </div>
+
+      <!-- Botón -->
+      <div class="d-grid">
+    <button type="submit" class="btn btn-primary" onclick="location.href='formPaseadorComplete.html'">Agregar Paseador</button>
+  </div>
+    </form>
+  </div>
+  
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

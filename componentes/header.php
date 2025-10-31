@@ -102,44 +102,41 @@ if ($role === 'admin') {
 ?>
 
 <!-- HEADER dinámico -->
-<header class="mb-auto w-100 bg-primary text-white">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="<?= $homeLink ?>">
-                <img src="<?= $basePath ?>Assets/img/logo.png" alt="Logo" class="site-logo me-2" style="height:40px;">
+<header class="site-header mb-auto w-100">
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand site-title d-flex align-items-center" href="<?= $homeLink ?>">
+                <img src="<?= $basePath ?>Assets/img/logo.png" alt="Logo" class="site-logo me-2" style="height:50px;">
                 <span>Manadas</span>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="navbarMain">
-                <ul class="navbar-nav me-auto">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <?php foreach ($menuItems as $item): ?>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="<?= $item['link'] ?>"><?= htmlspecialchars($item['text']) ?></a>
+                            <a class="nav-link" href="<?= $item['link'] ?>"><?= htmlspecialchars($item['text']) ?></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
 
-                <ul class="navbar-nav">
-                    <li class="nav-item d-flex align-items-center me-3">
-                        <?php
-                        // Debug: mostrar la URL de la imagen
-                        echo "<!-- Debug: URL de imagen = " . htmlspecialchars($displayImg) . " -->";
-                        ?>
-                        <img src="<?= htmlspecialchars($displayImg) ?>" alt="Avatar"
-                            class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover;">
-                        <div class="d-flex flex-column">
-                            <span class="nav-link text-white p-0"><?= htmlspecialchars($displayName) ?></span>
-                            <small class="text-white-50"><?= strtoupper(htmlspecialchars($role)) ?></small>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold text-white" href="<?= $basePath ?>auth/logout.php">Cerrar sesión</a>
-                    </li>
-                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a href="#" class="d-block link-light text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="<?= htmlspecialchars($displayImg) ?>" alt="Avatar"
+                                class="rounded-circle me-2" style="width:40px;height:40px;object-fit:cover;">
+                            <?= htmlspecialchars($displayName) ?>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end text-small" aria-labelledby="dropdownUser">
+                            <li><p class="dropdown-item-text mb-0"><small>Logueado como:</small><br><strong><?= strtoupper(htmlspecialchars($role)) ?></strong></p></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="<?= $basePath ?>auth/logout.php">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>

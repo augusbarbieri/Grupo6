@@ -1,40 +1,65 @@
 @import url('https://fonts.googleapis.com/css2?family=Galdeano&family=Roboto+Slab:wght@400;700&display=swap');
 
 
+:root {
+  --primary-color: #0d6efd; /* Azul primario de Bootstrap */
+  --header-bg: var(--primary-color);
+  --header-color: #fff;
+}
+
 /* ===========================
    HEADER
 =========================== */
 .site-header {
-  background-color: var(--header-bg, #222); /* usa variable por defecto */
-  color: var(--header-color, #fff);
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  background-color: var(--header-bg);
+  padding: 0.5rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.site-logo {
-  height: 80px;
-  width: auto;
+.site-header .navbar {
+  background-color: transparent !important;
 }
 
 .site-title {
-  color: var(--header-color, #fff);
+  color: var(--header-color);
+  font-family: 'Galdeano', cursive;
+  font-size: 1.75rem;
   text-decoration: none;
-  font-weight: bold;
 }
 
 .site-title:hover {
-  color: #00ccff;
+  color: var(--header-color);
+  opacity: 0.9;
 }
 
 .site-header .nav-link {
-  color: var(--header-color, #fff);
-  margin-left: 1rem;
-  transition: color 0.2s ease;
+  color: var(--header-color);
+  opacity: 0.8;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .site-header .nav-link:hover,
 .site-header .nav-link.active {
-  color: #00ccff;
+  opacity: 1;
+  color: var(--header-color);
+}
+
+.site-header .dropdown-menu {
+  background-color: var(--primary-color);
+  border-color: #0a58ca; /* Un poco más oscuro */
+}
+
+.site-header .dropdown-item {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.site-header .dropdown-item:hover {
+  background-color: #0a58ca;
+  color: #fff;
+}
+
+.site-header .dropdown-divider {
+  border-top: 1px solid #0a58ca;
 }
 
 
