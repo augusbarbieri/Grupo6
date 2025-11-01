@@ -5,9 +5,20 @@ if (session_status() == PHP_SESSION_NONE) {
 
 // Function to calculate the correct base path from any directory
 function getBasePath() {
-    // A simple approach to determine the depth and construct a relative path
-    $path = substr_count(trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'), '/');
-    return str_repeat('../', $path);
+    $realPath = realpath(dirname(__FILE__));
+    $rootPath = realpath($_SERVER['DOCUMENT_ROOT']);
+    $relativePath = str_replace($rootPath, '', $realPath);
+
+    $depth = substr_count($relativePath, '/');
+
+    // Check if we are at the root or a subdirectory
+    if ($_SERVER['DOCUMENT_ROOT'] === dirname($_SERVER['SCRIPT_FILENAME'])) {
+        // We are in a file at the root, so no '../' is needed.
+        return './';
+    } else {
+        // We are in a subdirectory.
+        return str_repeat('../', $depth);
+    }
 }
 
 $basePath = getBasePath();
