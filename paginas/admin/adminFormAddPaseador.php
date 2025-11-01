@@ -1,11 +1,11 @@
 <?php
-$basePath = '../../';
-include_once '../../componentes/header.php';
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
+include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
 <div class="container mt-5">
     <h2 class="mb-4">Agregar Paseador</h2>
-    <form id="formPaseador" action="formPaseadorComplete.php" method="post">
+    <form id="formPaseador" action="<?php echo BASE_URL; ?>paginas/admin/formPaseadorComplete.php" method="post">
         <!-- Nombre -->
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre del paseador *</label>
@@ -43,4 +43,4 @@ include_once '../../componentes/header.php';
     </form>
 </div>
 
-<?php include_once '../../componentes/footer.php'; ?>
+<?php include_once __DIR__ . '/../../componentes/footer.php'; ?>

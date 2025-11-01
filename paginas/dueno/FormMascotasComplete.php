@@ -1,6 +1,6 @@
 <?php
-$basePath = '../../';
-include_once '../../componentes/header.php';
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
+include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
 <!-- Hero-->
@@ -14,9 +14,9 @@ include_once '../../componentes/header.php';
     <form id="formMascota">
         <!-- Botón -->
         <div class="d-grid">
-            <a href="landingUsuario.php" class="btn btn-primary d-grid">Volver</a>
+            <a href="<?php echo BASE_URL; ?>paginas/dueno/landingUsuario.php" class="btn btn-primary d-grid">Volver</a>
         </div>
         <div class="mb-3">
         </div>
 
-        <?php include_once '../../componentes/footer.php'; ?>
+        <?php include_once __DIR__ . '/../../componentes/footer.php'; ?>

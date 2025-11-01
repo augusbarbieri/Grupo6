@@ -1,6 +1,6 @@
 <?php
-$basePath = '../../';
-include_once '../../componentes/header.php';
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
+include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
 <!-- Hero -->
@@ -13,7 +13,7 @@ include_once '../../componentes/header.php';
 
 <div class="ms-3 me-3 mt-5">
     <div class="d-flex align-items-center mb-4">
-        <a href="formMascota.php" class="btn btn-primary ms-auto">Agregar Mascota</a>
+        <a href="<?php echo BASE_URL; ?>paginas/dueno/formMascota.php" class="btn btn-primary ms-auto">Agregar Mascota</a>
     </div>
 
     <!-- Sección Mascotas -->
@@ -23,7 +23,7 @@ include_once '../../componentes/header.php';
             <!-- Mascota 1 -->
             <div class="col-md-4">
                 <div class="mascota-card">
-                    <img src="../../Assets/img/Labrador.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
+                    <img src="<?php echo BASE_URL; ?>Assets/img/Labrador.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
                     <input type="file" class="form-control mb-2" accept="image/*">
                     <input type="text" class="form-control mb-2" placeholder="Nombre">
 
@@ -43,7 +43,7 @@ include_once '../../componentes/header.php';
             <!-- Mascota 2 -->
             <div class="col-md-4">
                 <div class="mascota-card">
-                    <img src="../../Assets/img/BorderCollie.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
+                    <img src="<?php echo BASE_URL; ?>Assets/img/BorderCollie.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
                     <input type="file" class="form-control mb-2" accept="image/*">
                     <input type="text" class="form-control mb-2" placeholder="Nombre">
 
@@ -62,7 +62,7 @@ include_once '../../componentes/header.php';
             <!-- Mascota 3 -->
             <div class="col-md-4">
                 <div class="mascota-card">
-                    <img src="../../Assets/img/Caniche.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
+                    <img src="<?php echo BASE_URL; ?>Assets/img/Caniche.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
                     <input type="file" class="form-control mb-2" accept="image/*">
                     <input type="text" class="form-control mb-2" placeholder="Nombre">
 
@@ -80,4 +80,4 @@ include_once '../../componentes/header.php';
         </div>
     </div>
 
-    <?php include_once '../../componentes/footer.php'; ?>
+    <?php include_once __DIR__ . '/../../componentes/footer.php'; ?>

@@ -1,6 +1,6 @@
 <?php
-$basePath = '../../';
-include_once '../../componentes/header.php';
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
+include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
 <!-- HERO -->
@@ -49,7 +49,7 @@ include_once '../../componentes/header.php';
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">📅 Mis Paseos</h5>
                     <p class="text-muted flex-grow-1">Ver y actualizar el estado de los paseos asignados.</p>
-                    <a href="misPaseosPaseador.php" class="btn btn-primary mt-auto">Ir a Mis Paseos</a>
+                    <a href="<?php echo BASE_URL; ?>paginas/paseador/misPaseosPaseador.php" class="btn btn-primary mt-auto">Ir a Mis Paseos</a>
                 </div>
             </div>
         </div>
@@ -58,11 +58,11 @@ include_once '../../componentes/header.php';
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">👤 Mi Perfil</h5>
                     <p class="text-muted flex-grow-1">Editar datos personales, zona y disponibilidad.</p>
-                    <a href="perfilPaseador.php" class="btn btn-outline-primary mt-auto">Ir a Mi Perfil</a>
+                    <a href="<?php echo BASE_URL; ?>paginas/paseador/perfilPaseador.php" class="btn btn-outline-primary mt-auto">Ir a Mi Perfil</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<?php include_once '../../componentes/footer.php'; ?>
+<?php include_once __DIR__ . '/../../componentes/footer.php'; ?>

@@ -1,6 +1,6 @@
 <?php
-$basePath = '../../';
-include_once '../../componentes/header.php';
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
+include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
 <!-- Overview -->
@@ -104,4 +104,4 @@ include_once '../../componentes/header.php';
     </div>
 </div>
 
-<?php include_once '../../componentes/footer.php'; ?>
+<?php include_once __DIR__ . '/../../componentes/footer.php'; ?>

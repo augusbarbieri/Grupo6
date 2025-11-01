@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
 require_once '../../php/conexion.php';
 require_once '../../php/usuarios.php';
 include_once '../../componentes/header.php';
