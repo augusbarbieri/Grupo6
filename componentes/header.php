@@ -61,13 +61,13 @@ if ($isLoggedIn) {
     <meta charset="UTF8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manadas</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="<?= $basePath ?>Assets/css/new-style.css?v=<?= time(); ?>">
 </head>
 <body>
-    <header class="header">
+    <header class="main-header">
         <a href="<?= $homeLink ?>" class="logo">Manadas</a>
-        <nav class="nav">
+        <nav class="main-nav">
             <?php if ($isLoggedIn): ?>
                 <?php foreach ($menuItems as $item): ?>
                     <a href="<?= $item['link'] ?>"><?= htmlspecialchars($item['text']) ?></a>
@@ -79,4 +79,3 @@ if ($isLoggedIn) {
             <?php endif; ?>
         </nav>
     </header>
-    <div class="container">
