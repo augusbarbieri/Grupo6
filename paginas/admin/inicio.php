@@ -1,11 +1,12 @@
 <?php
-require_once "../../auth/session.php";
-require_once "../../php/conexion.php"; // Incluir el archivo de conexión
+require_once $_SERVER['DOCUMENT_ROOT'] . '/auth/session.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/php/conexion.php';
+include_once $_SERVER['DOCUMENT_ROOT'] . '/componentes/header.php';
 
 $email = controlarSesion();
 controlarRol('admin');
 
-$conn = conectarBDManadas(); // Conectar a la base de datos
+$conn = conectarBDManadas();
 
 // Contar paseadores
 $sql_paseadores = "SELECT COUNT(*) as total_paseadores FROM paseador";
@@ -17,47 +18,30 @@ $sql_clientes = "SELECT COUNT(*) as total_clientes FROM usuarios";
 $result_clientes = $conn->query($sql_clientes);
 $total_clientes = ($result_clientes && $result_clientes->num_rows > 0) ? $result_clientes->fetch_assoc()['total_clientes'] : 0;
 
-cerrarBDConexion($conn); // Cerrar la conexión
-
-$basePath = '../../';
-include "../../componentes/header.php";
+cerrarBDConexion($conn);
 ?>
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración - Manadas</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../../assets/css/style.css">
-</head>
+<main class="container">
+    <section class="hero">
+        <h1>Bienvenido al Panel de Administración</h1>
+        <p>Gestiona paseadores y clientes de forma centralizada.</p>
+        <a href="#dashboard-cards" class="btn">Empezar ahora</a>
+    </section>
 
-<body>
-    <main class="admin-dashboard">
-        <section class="hero">
-            <div class="hero-text">
-                <h1>Bienvenido al Panel de Administración</h1>
-                <p>Gestiona paseadores y clientes de forma centralizada.</p>
-                <a href="#dashboard-cards" class="btn-get-started">Empezar ahora</a>
-            </div>
-        </section>
+    <section id="dashboard-cards" class="dashboard-cards">
+        <div class="card">
+            <h2>Paseadores</h2>
+            <p>Total de paseadores registrados.</p>
+            <div class="card-count"><?= $total_paseadores ?></div>
+            <a href="adminPaseadores.php" class="btn-card">Gestionar Paseadores</a>
+        </div>
+        <div class="card">
+            <h2>Clientes</h2>
+            <p>Total de clientes registrados.</p>
+            <div class="card-count"><?= $total_clientes ?></div>
+            <a href="adminClientes.php" class="btn-card">Gestionar Clientes</a>
+        </div>
+    </section>
+</main>
 
-        <section id="dashboard-cards" class="dashboard-cards">
-            <div class="card">
-                <h2>Paseadores</h2>
-                <p>Total de paseadores registrados.</p>
-                <div class="card-count"><?= $total_paseadores ?></div>
-                <a href="adminPaseadores.php" class="btn-card">Gestionar Paseadores</a>
-            </div>
-            <div class="card">
-                <h2>Clientes</h2>
-                <p>Total de clientes registrados.</p>
-                <div class="card-count"><?= $total_clientes ?></div>
-                <a href="adminClientes.php" class="btn-card">Gestionar Clientes</a>
-            </div>
-        </section>
-    </main>
-</body>
-
-</html>
+<?php include_once $_SERVER['DOCUMENT_ROOT'] . '/componentes/footer.php'; ?>

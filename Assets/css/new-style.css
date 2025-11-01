@@ -1,135 +1,214 @@
-/* General styles */
+/* Estilos generales */
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
+    background-color: #f4f7f6;
     color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    margin: 0;
+    padding-top: 80px; /* Espacio para el header fijo */
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    flex: 1;
 }
 
 /* Header */
-.header {
+.main-header {
     background-color: #fff;
-    padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
+    padding: 15px 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
 }
 
 .logo {
-    font-size: 24px;
+    font-size: 1.8em;
     font-weight: bold;
-    color: #333;
+    color: #3498DB;
+    text-decoration: none;
 }
 
-.nav a {
+.main-nav a {
+    margin-left: 20px;
     text-decoration: none;
     color: #555;
-    margin-left: 20px;
-    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.3s;
 }
 
-.nav a:hover {
-    color: #000;
+.main-nav a:hover, .main-nav a.active {
+    color: #3498DB;
 }
 
-/* Buttons */
-.btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+/* Hero Section */
+.hero {
+    background-color: #5DADE2;
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-radius: 0 0 20px 20px;
 }
 
-.btn-primary {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.btn-primary:hover {
-    background-color: #0056b3;
-}
-
-/* Forms */
-.form-group {
+.hero h1 {
+    font-size: 3em;
     margin-bottom: 20px;
 }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
 }
 
-.form-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-/* Footer */
-.footer {
-    background-color: #fff;
-    padding: 20px;
-    border-top: 1px solid #ddd;
-    text-align: center;
-    margin-top: 40px;
-}
-
-/* Login page styles */
-.login-container {
+/* Formularios */
+.form-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    min-height: calc(100vh - 80px); /* Ajustado al tamaño del header */
+    padding: 40px 0;
 }
 
-.login-card {
+.form-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     width: 100%;
-    max-width: 400px;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
 }
 
-/* Table styles */
+.form-card h3 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    color: #3498DB;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+}
+
+.form-control:focus {
+    border-color: #3498DB;
+    outline: none;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #3498DB;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #2874A6;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #3498DB;
+    border: 2px solid #3498DB;
+}
+
+.btn-secondary:hover {
+    background-color: #3498DB;
+    color: white;
+}
+
+/* Dashboard Cards */
+.dashboard-cards {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 30px;
+    width: 300px;
+    text-align: left;
+}
+
+.card h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #3498DB;
+}
+
+.card p {
+    font-size: 1em;
+    color: #666;
+}
+
+.card-count {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.btn-card {
+    display: block;
+    background-color: #3498DB;
+    color: white;
+    padding: 12px;
+    border-radius: 25px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.btn-card:hover {
+    background-color: #2874A6;
+}
+
+/* Tablas */
 .table {
     width: 100%;
-    margin-bottom: 1rem;
-    color: #212529;
     border-collapse: collapse;
+    margin-top: 20px;
 }
 
-.table th,
-.table td {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
+.table th, .table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+    text-align: left;
 }
 
-.table thead th {
-    vertical-align: bottom;
-    border-bottom: 2px solid #dee2e6;
-    background-color: #343a40;
-    color: #fff;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
-.table-hover tbody tr:hover {
-    background-color: rgba(0, 0, 0, 0.075);
+.table thead {
+    background-color: #f2f2f2;
 }
