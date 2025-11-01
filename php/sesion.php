@@ -59,7 +59,7 @@ function cerrarSesion($clave)
     session_destroy();
 
     // Redirecciona a la página de login.
-    header("Location: ../paginas/inicio-sesion.html");
+    header("Location: ../paginas/inicio-sesion.php");
     exit();
 }
 
@@ -78,7 +78,7 @@ function controlarSesion()
     } else {
         // Si no existe, significa que el usuario no está logueado.
         // Lo redirigimos a la página de login.
-        header("Location: ../paginas/inicio-sesion.html");
+        header("Location: ../paginas/inicio-sesion.php");
         exit();
     }
     return $sesionUsuario;
