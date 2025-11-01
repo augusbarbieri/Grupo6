@@ -1,12 +1,12 @@
 <?php
-$basePath = '../';
-include_once '../componentes/header.php';
+require_once __DIR__ . '/../php/config.php'; // Defines BASE_URL
+include_once __DIR__ . '/../componentes/header.php';
 ?>
 
 <div class="form-container">
     <div class="form-card">
         <h3>Registro</h3>
-        <form action="../php/register.php" method="POST" enctype="multipart/form-data">
+        <form action="<?php echo BASE_URL; ?>php/register.php" method="POST" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresá tu nombre" required>
@@ -41,10 +41,10 @@ include_once '../componentes/header.php';
             </div>
             <button type="submit" class="btn btn-primary w-100">Registrarme</button>
             <p class="text-center mt-3">
-                ¿Ya tenés cuenta? <a href="inicio-sesion.php">Iniciar sesión</a>
+                ¿Ya tenés cuenta? <a href="<?php echo BASE_URL; ?>paginas/inicio-sesion.php">Iniciar sesión</a>
             </p>
         </form>
     </div>
 </div>
 
-<?php include_once '../componentes/footer.php'; ?>
+<?php include_once __DIR__ . '/../componentes/footer.php'; ?>

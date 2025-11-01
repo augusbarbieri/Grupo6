@@ -1,6 +1,6 @@
 <?php
-$basePath = '../../';
-include_once '../../componentes/header.php';
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
+include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
 <!-- Contenido principal -->
@@ -9,7 +9,7 @@ include_once '../../componentes/header.php';
     <!-- Mascota principal -->
     <section class="hero text-center text-white bg-dark py-5">
         <div class="container">
-            <img src="../../Assets/img/BorderCollie.jfif" alt="Foto de mi mascota" class="img-fluid rounded-circle border mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+            <img src="<?php echo BASE_URL; ?>Assets/img/BorderCollie.jfif" alt="Foto de mi mascota" class="img-fluid rounded-circle border mb-3" style="width: 150px; height: 150px; object-fit: cover;">
             <h2>🐾 Rocco 🐾</h2>
         </div>
     </section>
@@ -34,7 +34,7 @@ include_once '../../componentes/header.php';
                         <span class="badge bg-success">Confirmado</span>
                     </div>
                     <!-- Foto paseador -->
-                    <img src="../../Assets/img/walker3.jpg" alt="Foto paseador Juan Pérez" class="rounded-circle ms-3" style="width: 150px;; height: 150px;; object-fit:cover;">
+                    <img src="<?php echo BASE_URL; ?>Assets/img/walker3.jpg" alt="Foto paseador Juan Pérez" class="rounded-circle ms-3" style="width: 150px;; height: 150px;; object-fit:cover;">
                 </div>
             </div>
 
@@ -46,7 +46,7 @@ include_once '../../componentes/header.php';
                         <p class="card-text">Paseador: <strong>Ana</strong></p>
                         <span class="badge bg-warning text-dark">Pendiente</span>
                     </div>
-                    <img src="../../Assets/img/walker2.jpg" alt="Foto paseador Lucía Gómez" class="rounded-circle ms-3" style="width: 150px;; height: 150px;; object-fit:cover;">
+                    <img src="<?php echo BASE_URL; ?>Assets/img/walker2.jpg" alt="Foto paseador Lucía Gómez" class="rounded-circle ms-3" style="width: 150px;; height: 150px;; object-fit:cover;">
                 </div>
             </div>
 
@@ -58,7 +58,7 @@ include_once '../../componentes/header.php';
                         <p class="card-text">Paseador: <strong>Carlos</strong></p>
                         <span class="badge bg-success">Confirmado</span>
                     </div>
-                    <img src="../../Assets/img/walker1.jpg" alt="Foto paseador Carlos López" class="rounded-circle ms-3" style="width: 150px;; height: 150px;; object-fit:cover;">
+                    <img src="<?php echo BASE_URL; ?>Assets/img/walker1.jpg" alt="Foto paseador Carlos López" class="rounded-circle ms-3" style="width: 150px;; height: 150px;; object-fit:cover;">
                 </div>
             </div>
         </div>
@@ -66,4 +66,4 @@ include_once '../../componentes/header.php';
 
 </main>
 
-<?php include_once '../../componentes/footer.php'; ?>
+<?php include_once __DIR__ . '/../../componentes/footer.php'; ?>

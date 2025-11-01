@@ -1,13 +1,13 @@
 <?php
-$basePath = '../../';
-include_once '../../componentes/header.php';
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
+include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
 <!-- Hero-->
 <section class="hero">
     <h1 class="display-4 fw-bold">Guarda cupo para tu proximo paseo</h1>
     <p class="lead">Queres pasear con el paseador X</p>
-    <img src="../../Assets/img/walker1.jpg" class="rounded-circle border mb-3" width="200" height="200" padding=60>
+    <img src="<?php echo BASE_URL; ?>Assets/img/walker1.jpg" class="rounded-circle border mb-3" width="200" height="200" padding=60>
 </section>
 <div class="container mt-5">
     <h2 class="mb-4">Agregar Mascota</h2>
@@ -21,9 +21,9 @@ include_once '../../componentes/header.php';
 
         <!-- Botón -->
         <div class="d-grid">
-            <a type="submit" class="btn btn-primary" href="landingUsuario.php">Agregar al paseo</a>
+            <a type="submit" class="btn btn-primary" href="<?php echo BASE_URL; ?>paginas/dueno/landingUsuario.php">Agregar al paseo</a>
         </div>
     </form>
 </div>
 
-<?php include_once '../../componentes/footer.php'; ?>
+<?php include_once __DIR__ . '/../../componentes/footer.php'; ?>

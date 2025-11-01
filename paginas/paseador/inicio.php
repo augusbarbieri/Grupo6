@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
 require_once "../../auth/session.php";
 $email = controlarSesion();
 controlarRol('paseador');

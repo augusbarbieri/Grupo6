@@ -1,4 +1,5 @@
 <?php
+require_once "../../php/config.php"; // Defines BASE_URL
 require_once "../../auth/session.php";
 require_once "../../php/conexion.php";
 
@@ -19,7 +20,6 @@ $total_clientes = ($result_clientes && $result_clientes->num_rows > 0) ? $result
 
 cerrarBDConexion($conn);
 
-$basePath = '../../';
 include "../../componentes/header.php";
 ?>
 
