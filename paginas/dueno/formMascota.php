@@ -31,16 +31,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
-<div class="container mt-5 mb-5">
-    <h2 class="mb-4">Agregar Mascota</h2>
+<div class="form-container">
+    <div class="form-card">
+        <h3 class="mb-4">Agregar Mascota</h3>
 
-    <?php if ($mensaje): ?>
-        <div class="alert alert-danger" role="alert">
-            <?php echo htmlspecialchars($mensaje); ?>
-        </div>
-    <?php endif; ?>
+        <?php if ($mensaje) : ?>
+            <div class="alert alert-danger" role="alert">
+                <?php echo htmlspecialchars($mensaje); ?>
+            </div>
+        <?php endif; ?>
 
-    <form action="formMascota.php" method="POST" enctype="multipart/form-data">
+        <form action="formMascota.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre de la mascota *</label>
             <input type="text" class="form-control" id="nombre" name="nombre" required>
@@ -67,9 +68,10 @@ include_once __DIR__ . '/../../componentes/header.php';
             <input class="form-control" type="file" id="img" name="img" accept="image/*">
         </div>
         <div class="d-grid">
-            <button type="submit" class="btn btn-primary">Agregar Mascota</button>
+            <button type="submit" class="btn btn-primary btn">Agregar Mascota</button>
         </div>
-    </form>
+        </form>
+    </div>
 </div>
 
 <?php include_once __DIR__ . '/../../componentes/footer.php'; ?>
