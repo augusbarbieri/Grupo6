@@ -1,83 +1,77 @@
 <?php
-require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
+require_once __DIR__ . '/../../php/config.php';
+require_once __DIR__ . '/../../php/sesion.php';
+require_once __DIR__ . '/../../php/mascotas.php';
+
+// Redirigir si no está logueado
+if (!is_logged_in()) {
+    header('Location: ' . BASE_URL . 'paginas/inicio-sesion.php');
+    exit;
+}
+
+$id_dueno = $_SESSION['user_id'];
+$mascotas = obtenerMascotasPorDueno($id_dueno);
+
 include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
 <!-- Hero -->
-<section class="hero text-center text-white bg-dark py-7 mt-4">
+<section class="hero text-center text-white bg-dark py-5 mt-4">
     <div class="container">
-        <h1 class="display-4 fw-bold">Mis mascotas</h1>
-        <p class="lead">🐶 Aca estan tu perritos 🐶</p>
+        <h1 class="display-4 fw-bold">Mis Mascotas</h1>
+        <p class="lead">🐶 Aquí están tus perritos 🐶</p>
     </div>
 </section>
 
-<div class="ms-3 me-3 mt-5">
-    <div class="d-flex align-items-center mb-4">
-        <a href="<?php echo BASE_URL; ?>paginas/dueno/formMascota.php" class="btn btn-primary ms-auto">Agregar Mascota</a>
+<div class="container mt-5 mb-5">
+    <div class="d-flex justify-content-end mb-4">
+        <a href="<?php echo BASE_URL; ?>paginas/dueno/formMascota.php" class="btn btn-primary">
+            <i class="fas fa-plus"></i> Agregar Mascota
+        </a>
     </div>
 
-    <!-- Sección Mascotas -->
-    <div class="mascotas-container">
-        <h2 class="text-center mb-4">Mis Mascotas</h2>
-        <div class="row g-4">
-            <!-- Mascota 1 -->
-            <div class="col-md-4">
-                <div class="mascota-card">
-                    <img src="<?php echo BASE_URL; ?>Assets/img/Labrador.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
-                    <input type="file" class="form-control mb-2" accept="image/*">
-                    <input type="text" class="form-control mb-2" placeholder="Nombre">
+    <?php if (isset($_GET['exito']) && $_GET['exito'] === 'mascota_agregada'): ?>
+        <div class="alert alert-success">Mascota agregada correctamente.</div>
+    <?php endif; ?>
+    <?php if (isset($_GET['exito']) && $_GET['exito'] === 'mascota_actualizada'): ?>
+        <div class="alert alert-success">Mascota actualizada correctamente.</div>
+    <?php endif; ?>
+     <?php if (isset($_GET['exito']) && $_GET['exito'] === 'mascota_eliminada'): ?>
+        <div class="alert alert-success">Mascota eliminada correctamente.</div>
+    <?php endif; ?>
+    <?php if (isset($_GET['error'])): ?>
+        <div class="alert alert-danger">Ha ocurrido un error.</div>
+    <?php endif; ?>
 
-                    <!-- Enum de razas -->
-                    <select class="form-select">
-                        <option value="">Selecciona la raza</option>
-                        <option value="labrador">Labrador</option>
-                        <option value="bulldog">Bulldog</option>
-                        <option value="pastor">Pastor Alemán</option>
-                        <option value="beagle">Beagle</option>
-                        <option value="caniche">Caniche</option>
-                        <option value="mestizo">Mestizo</option>
-                    </select>
-                </div>
+    <div class="row g-4">
+        <?php if (empty($mascotas)): ?>
+            <div class="col-12">
+                <p class="text-center">Aún no has registrado ninguna mascota.</p>
             </div>
-
-            <!-- Mascota 2 -->
-            <div class="col-md-4">
-                <div class="mascota-card">
-                    <img src="<?php echo BASE_URL; ?>Assets/img/BorderCollie.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
-                    <input type="file" class="form-control mb-2" accept="image/*">
-                    <input type="text" class="form-control mb-2" placeholder="Nombre">
-
-                    <select class="form-select">
-                        <option value="">Selecciona la raza</option>
-                        <option value="labrador">Labrador</option>
-                        <option value="bulldog">Bulldog</option>
-                        <option value="pastor">Pastor Alemán</option>
-                        <option value="beagle">Beagle</option>
-                        <option value="caniche">Caniche</option>
-                        <option value="mestizo">Mestizo</option>
-                    </select>
+        <?php else: ?>
+            <?php foreach ($mascotas as $mascota): ?>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="<?php echo BASE_URL; ?>Assets/img/mascotas/<?php echo !empty($mascota['img']) ? htmlspecialchars($mascota['img']) : 'default.png'; ?>" class="card-img-top" alt="Foto de <?php echo htmlspecialchars($mascota['nombre']); ?>" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title"><?php echo htmlspecialchars($mascota['nombre']); ?></h5>
+                            <p class="card-text"><strong>Raza:</strong> <?php echo htmlspecialchars($mascota['raza']); ?></p>
+                            <p class="card-text"><strong>Tamaño:</strong> <?php echo ucfirst(htmlspecialchars($mascota['tamano'])); ?></p>
+                            <p class="card-text"><strong>Observaciones:</strong> <?php echo htmlspecialchars($mascota['observaciones']); ?></p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top-0 d-flex justify-content-end gap-2">
+                             <a href="editarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-sm btn-outline-primary">
+                                <i class="fas fa-pencil-alt"></i> Editar
+                            </a>
+                            <a href="eliminarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar a <?php echo htmlspecialchars($mascota['nombre']); ?>?');">
+                                <i class="fas fa-trash-alt"></i> Eliminar
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Mascota 3 -->
-            <div class="col-md-4">
-                <div class="mascota-card">
-                    <img src="<?php echo BASE_URL; ?>Assets/img/Caniche.jfif" alt="Foto de perfil" class="rounded-circle border d-block mx-auto" width="150" height="150">
-                    <input type="file" class="form-control mb-2" accept="image/*">
-                    <input type="text" class="form-control mb-2" placeholder="Nombre">
-
-                    <select class="form-select">
-                        <option value="">Selecciona la raza</option>
-                        <option value="labrador">Labrador</option>
-                        <option value="bulldog">Bulldog</option>
-                        <option value="pastor">Pastor Alemán</option>
-                        <option value="beagle">Beagle</option>
-                        <option value="caniche">Caniche</option>
-                        <option value="mestizo">Mestizo</option>
-                    </select>
-                </div>
-            </div>
-        </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
+</div>
 
-    <?php include_once __DIR__ . '/../../componentes/footer.php'; ?>
+<?php include_once __DIR__ . '/../../componentes/footer.php'; ?>
