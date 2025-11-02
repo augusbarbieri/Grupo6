@@ -14,13 +14,13 @@ $mascotas = obtenerMascotasPorDueno($id_dueno);
 include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
-<!-- Hero -->
-<section class="hero text-center text-white bg-dark py-5 mt-4">
-    <div class="container">
+<div class="container mt-4">
+    <!-- Hero -->
+    <div class="hero-contained">
         <h1 class="display-4 fw-bold">Mis Mascotas</h1>
         <p class="lead">🐶 Aquí están tus perritos 🐶</p>
     </div>
-</section>
+</div>
 
 <div class="container mt-5 mb-5">
     <div class="d-flex justify-content-end mb-4">
@@ -50,8 +50,8 @@ include_once __DIR__ . '/../../componentes/header.php';
         <?php else: ?>
             <?php foreach ($mascotas as $mascota): ?>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card h-100">
-                        <img src="<?php echo BASE_URL; ?>Assets/img/mascotas/<?php echo !empty($mascota['img']) ? htmlspecialchars($mascota['img']) : 'default.png'; ?>" class="card-img-top" alt="Foto de <?php echo htmlspecialchars($mascota['nombre']); ?>" style="height: 200px; object-fit: cover;">
+                    <div class="pet-card">
+                        <img src="<?php echo BASE_URL; ?>Assets/img/mascotas/<?php echo !empty($mascota['img']) ? htmlspecialchars($mascota['img']) : 'default.png'; ?>" class="card-img-top" alt="Foto de <?php echo htmlspecialchars($mascota['nombre']); ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($mascota['nombre']); ?></h5>
                             <p class="card-text"><strong>Raza:</strong> <?php echo htmlspecialchars($mascota['raza']); ?></p>

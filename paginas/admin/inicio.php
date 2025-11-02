@@ -35,17 +35,17 @@ include "../../componentes/header.php";
     </section>
 
     <section id="dashboard-cards" class="dashboard-cards">
-        <div class="card">
+        <div class="dashboard-card">
             <h2>Paseadores</h2>
             <p>Total de paseadores registrados.</p>
-            <div class="card-count"><?= $total_paseadores ?></div>
-            <a href="adminPaseadores.php" class="btn-card">Gestionar Paseadores</a>
+            <div class="dashboard-card-count"><?= $total_paseadores ?></div>
+            <a href="adminPaseadores.php" class="btn-dashboard-card">Gestionar Paseadores</a>
         </div>
-        <div class="card">
+        <div class="dashboard-card">
             <h2>Clientes</h2>
             <p>Total de clientes registrados.</p>
-            <div class="card-count"><?= $total_clientes ?></div>
-            <a href="adminClientes.php" class="btn-card">Gestionar Clientes</a>
+            <div class="dashboard-card-count"><?= $total_clientes ?></div>
+            <a href="adminClientes.php" class="btn-dashboard-card">Gestionar Clientes</a>
         </div>
     </section>
 </main>

@@ -22,16 +22,15 @@ $usuario = obtenerUsuarioPorId($conn, $id_usuario);
 include_once __DIR__ . '/../../componentes/header.php';
 ?>
 
-<!-- Hero Section -->
-<div class="hero-profile">
-    <div class="container">
-        <h1>Este es tu perfil, <?php echo htmlspecialchars($usuario['nombre']); ?></h1>
-        <p>Administra tu información y gestiona tus datos personales 🐾</p>
-    </div>
-</div>
-
 <!-- Profile Content -->
 <div class="container profile-container">
+    <!-- Hero Section -->
+    <div class="hero-contained">
+        <div class="hero-profile">
+            <h1>Este es tu perfil, <?php echo htmlspecialchars($usuario['nombre']); ?></h1>
+            <p>Administra tu información y gestiona tus datos personales 🐾</p>
+        </div>
+    </div>
     <?php
     if (isset($_GET['exito']) && $_GET['exito'] == '1') {
         echo '<div class="alert alert-success" role="alert">¡Tus datos se han actualizado correctamente!</div>';
