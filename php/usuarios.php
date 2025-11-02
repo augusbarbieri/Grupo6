@@ -8,6 +8,30 @@ function obtenerUsuarios($conn) {
     return null;
 }
 
+function verificarEmail($conn, $email)
+{
+    if ($conn) {
+        $sql = "SELECT * FROM usuarios WHERE email = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        return $stmt->get_result();
+    }
+    return null;
+}
+
+function agregarUsuario($conn, $nombre, $apellido, $email, $password, $telefono, $direccion, $path_img)
+{
+    if ($conn) {
+        $sql = "INSERT INTO usuarios (nombre, apellido, email, password, telefono, direccion, img, fecha_registro) VALUES (?, ?, ?, ?, ?, ?, ?, NOW())";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sssssss", $nombre, $apellido, $email, $password, $telefono, $direccion, $path_img);
+        $stmt->execute();
+        return $stmt->affected_rows;
+    }
+    return 0;
+}
+
 function actualizarUsuario($conn, $id, $nombre, $apellido, $email, $telefono, $direccion, $img = null) {
     if ($conn) {
         if ($img) {

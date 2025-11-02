@@ -2,6 +2,7 @@
 // 1. Incluimos nuestros archivos
 include "conexion.php";
 include "sesion.php"; // session_start() ya está aquí
+include "usuarios.php";
 
 // Obtener y limpiar entradas
 $nombre     = trim($_POST['nombre'] ?? '');
@@ -62,7 +63,7 @@ if (!$conn) {
 }
 
 // Verificar email
-$resVerEmail = verficarEmail($conn, $email);
+$resVerEmail = verificarEmail($conn, $email);
 if ($resVerEmail !== null && $resVerEmail->num_rows > 0) {
     echo 'El email ya se encuentra registrado. <a href="../paginas/registro.html">Volver</a>';
     cerrarBDConexion($conn);
