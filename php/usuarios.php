@@ -8,10 +8,15 @@ function obtenerUsuarios($conn) {
     return null;
 }
 
-function actualizarUsuario($conn, $id, $nombre, $apellido, $email, $telefono, $direccion) {
+function actualizarUsuario($conn, $id, $nombre, $apellido, $email, $telefono, $direccion, $img = null) {
     if ($conn) {
-        $stmt = $conn->prepare("UPDATE usuarios SET nombre = ?, apellido = ?, email = ?, telefono = ?, direccion = ? WHERE id_usuario = ?");
-        $stmt->bind_param("sssssi", $nombre, $apellido, $email, $telefono, $direccion, $id);
+        if ($img) {
+            $stmt = $conn->prepare("UPDATE usuarios SET nombre = ?, apellido = ?, email = ?, telefono = ?, direccion = ?, img = ? WHERE id_usuario = ?");
+            $stmt->bind_param("ssssssi", $nombre, $apellido, $email, $telefono, $direccion, $img, $id);
+        } else {
+            $stmt = $conn->prepare("UPDATE usuarios SET nombre = ?, apellido = ?, email = ?, telefono = ?, direccion = ? WHERE id_usuario = ?");
+            $stmt->bind_param("sssssi", $nombre, $apellido, $email, $telefono, $direccion, $id);
+        }
         return $stmt->execute();
     }
     return false;
