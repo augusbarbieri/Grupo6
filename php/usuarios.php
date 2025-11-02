@@ -7,3 +7,14 @@ function obtenerUsuarios($conn) {
     }
     return null;
 }
+
+function obtenerUsuarioPorId($conn, $id) {
+    if ($conn) {
+        $stmt = $conn->prepare("SELECT * FROM usuarios WHERE id_usuario = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+    return null;
+}
