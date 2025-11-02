@@ -1,3 +1,3 @@
 <?php
-include_once "session.php";
-cerrarSesion('email');
+require_once __DIR__ . '/../php/sesion.php';
+cerrarSesion();
