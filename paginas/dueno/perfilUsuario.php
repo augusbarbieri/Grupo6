@@ -6,8 +6,8 @@ require_once __DIR__ . '/../../php/usuarios.php';
 
 // session_start() está en sesion.php, así que no es necesario llamarlo de nuevo.
 // Sin embargo, necesitamos controlar que haya una sesión activa.
-// La función controlarSesion() ya se encarga de redirigir si no hay sesión.
-controlarSesion();
+// La función require_login() ya se encarga de redirigir si no hay sesión.
+require_login();
 
 // Conectar a la base de datos
 $conn = conectarBDManadas();
