@@ -18,12 +18,6 @@ include_once __DIR__ . '/../../componentes/header.php';
             <input type="text" class="form-control" id="apellido" name="apellido">
         </div>
 
-        <!-- DNI -->
-        <div class="mb-3">
-            <label for="dni" class="form-label">DNI del paseador</label>
-            <input type="number" class="form-control" id="dni" name="dni" required>
-        </div>
-
         <!-- Email -->
         <div class="mb-3">
             <label for="email" class="form-label">Email del paseador</label>
