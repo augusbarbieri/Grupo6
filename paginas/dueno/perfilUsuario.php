@@ -37,7 +37,7 @@ include_once __DIR__ . '/../../componentes/header.php';
         echo '<div class="alert alert-success" role="alert">¡Tus datos se han actualizado correctamente!</div>';
     }
     ?>
-    <div class="profile-card">
+    <div class="clean-card profile-card">
         <div class="profile-header">
             <img src="<?php echo BASE_URL . htmlspecialchars($usuario['img'] ?? 'Assets/img/Usuario.jpg'); ?>" alt="Foto de perfil" class="profile-img">
         </div>

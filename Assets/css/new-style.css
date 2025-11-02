@@ -120,15 +120,28 @@ body {
     z-index: 10;
 }
 
-.profile-card {
+/* Estilo base para tarjetas limpias y modernas */
+.clean-card {
     background-color: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 30px;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.clean-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card {
     max-width: 700px;
     margin: 0 auto;
-    padding: 40px;
     text-align: center;
+    padding: 40px; /* Mantenemos un padding mayor para el perfil */
 }
+
 
 .profile-header {
     margin-bottom: 20px;
@@ -273,13 +286,32 @@ body {
 }
 
 .card {
-    background-color: white;
+    background-color: #ffffff;
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    padding: 30px;
-    width: 300px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    padding: 0; /* Bootstrap añade padding, lo reseteamos para controlar desde el card-body */
+    margin-bottom: 20px;
+    border: none; /* Sobrescribimos el borde por defecto de Bootstrap */
+    transition: all 0.3s ease;
+    width: 100%; /* Hacemos que ocupe el ancho de su columna */
     text-align: left;
 }
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card .card-img-top {
+    border-radius: 15px 15px 0 0;
+}
+
+.card .card-footer {
+    background-color: #fff;
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+}
+
 
 .card h2 {
     font-size: 1.8em;
