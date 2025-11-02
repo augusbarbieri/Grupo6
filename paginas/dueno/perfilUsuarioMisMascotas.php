@@ -3,15 +3,14 @@ require_once __DIR__ . '/../../php/config.php';
 require_once __DIR__ . '/../../php/sesion.php';
 require_once __DIR__ . '/../../php/mascotas.php';
 
-// Redirigir si no está logueado
-if (!is_logged_in()) {
-    header('Location: ' . BASE_URL . 'paginas/inicio-sesion.php');
-    exit;
-}
+// Proteger la página. Si el usuario no está logueado, lo redirige.
+require_login();
 
+// Obtener los datos del dueño y sus mascotas
 $id_dueno = $_SESSION['user_id'];
 $mascotas = obtenerMascotasPorDueno($id_dueno);
 
+// Incluir el header después de toda la lógica de sesión y datos.
 include_once __DIR__ . '/../../componentes/header.php';
 ?>
 

@@ -2,40 +2,27 @@
 // Incluir la configuración para tener disponible BASE_URL
 require_once __DIR__ . '/config.php';
 
-// Siempre se debe llamar a session_start() al principio
-// si vas a trabajar con sesiones.
-session_start();
+// Iniciar la sesión solo si no está ya iniciada.
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
+/**
+ * Crea la sesión de usuario guardando sus datos.
+ * Esta función NO redirige. La redirección debe manejarse
+ * en el script que la llama (ej: login.php).
+ */
 function crearSesion($email, $role, $user_id, $name, $img) {
     $_SESSION['email'] = $email;
     $_SESSION['role'] = strtolower($role);
-
-    // Guardar id y datos básicos en sesión si se pasan
-    if ($user_id !== null) {
-        $_SESSION['user_id'] = $user_id;
-    }
-    if ($name !== null) {
-        $_SESSION['user_name'] = $name;
-    }
-    if ($img !== null) {
-        $_SESSION['user_img'] = $img;
-    }
-
-    // Redirigimos según el rol, usando BASE_URL para rutas absolutas
-    $roleLower = strtolower($role);
-    if ($roleLower === 'admin' || $roleLower === 'administrador') {
-        header("Location: " . BASE_URL . "paginas/admin/inicio.php");
-        exit();
-    } elseif ($roleLower === 'paseador') {
-        header("Location: " . BASE_URL . "paginas/paseador/inicio.php");
-        exit();
-    } else {
-        // Por defecto, dueño de mascota
-        header("Location: " . BASE_URL . "paginas/dueno/inicio.php");
-        exit();
-    }
+    $_SESSION['user_id'] = $user_id;
+    $_SESSION['user_name'] = $name;
+    $_SESSION['user_img'] = $img;
 }
 
+/**
+ * Cierra la sesión del usuario y lo redirige al login.
+ */
 function cerrarSesion() {
     session_unset();
     session_destroy();
@@ -46,24 +33,22 @@ function cerrarSesion() {
 }
 
 /**
- * Función para verificar si hay una sesión activa.
- * La usaremos en páginas protegidas (como el perfil) para
- * asegurarnos de que el usuario esté logueado.
+ * Verifica si el usuario ha iniciado sesión.
+ * @return bool True si está logueado, false si no.
  */
-function controlarSesion()
-{
-    $sesionUsuario = NULL;
-    // Verifica si la variable de sesión 'email' existe.
-    if (isset($_SESSION['email'])) {
-        // Si existe, la retornamos.
-        $sesionUsuario = $_SESSION['email'];
-    } else {
-        // Si no existe, significa que el usuario no está logueado.
-        // Lo redirigimos a la página de login.
+function is_logged_in() {
+    return isset($_SESSION['user_id']);
+}
+
+/**
+ * Función para proteger páginas. Si el usuario no está logueado,
+ * lo redirige a la página de inicio de sesión.
+ */
+function require_login() {
+    if (!is_logged_in()) {
         header("Location: " . BASE_URL . "paginas/inicio-sesion.php");
         exit();
     }
-    return $sesionUsuario;
 }
 
 function get_user_role() {
