@@ -421,6 +421,52 @@ body {
     color: white;
 }
 
+/* Estilos para la mascota destacada */
+.featured-pet {
+    flex-direction: row; /* Para el layout horizontal */
+    height: auto;
+}
+
+.featured-pet .card-body {
+    text-align: left;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-pet .img-fluid {
+    height: 100%;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 0;
+}
+
+.featured-pet .card-title {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.featured-pet .card-text {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+}
+
+.featured-pet .card-actions {
+    margin-top: auto; /* Empuja los botones hacia abajo */
+    padding-top: 15px;
+    display: flex;
+    gap: 15px;
+}
+
+.featured-pet .btn {
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+
 /* Tablas */
 .table {
     width: 100%;
