@@ -1,7 +1,7 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
+// Incluir el archivo de sesión, que ya se encarga de iniciar la sesión
+require_once __DIR__ . '/../php/sesion.php';
+
 // The BASE_URL is now expected to be defined before this header is included.
 // Typically by including 'php/config.php' at the beginning of a script.
 

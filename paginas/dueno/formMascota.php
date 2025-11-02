@@ -3,11 +3,8 @@ require_once __DIR__ . '/../../php/config.php';
 require_once __DIR__ . '/../../php/sesion.php';
 require_once __DIR__ . '/../../php/mascotas.php';
 
-// Redirigir si no está logueado
-if (!is_logged_in()) {
-    header('Location: ' . BASE_URL . 'paginas/inicio-sesion.php');
-    exit;
-}
+// Proteger la página. Si el usuario no está logueado, lo redirige.
+require_login();
 
 $id_dueno = $_SESSION['user_id'];
 $mensaje = '';

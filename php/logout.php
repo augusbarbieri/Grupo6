@@ -1,6 +1,7 @@
 <?php
-// Logout: usa la función cerrarSesion definida en sesion.php
-include "sesion.php"; // incluye session_start() y cerrarSesion()
+// Incluir el archivo de sesión de forma segura
+require_once __DIR__ . '/sesion.php';
 
-// Cerrar sesión para la clave 'email'
-cerrarSesion('email');
+// La función cerrarSesion se encarga de destruir la sesión
+// y redirigir al usuario a la página de inicio de sesión.
+cerrarSesion();
