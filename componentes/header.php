@@ -1,12 +1,13 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-// The BASE_URL is now expected to be defined before this header is included.
-// Typically by including 'php/config.php' at the beginning of a script.
+// Incluir lógica de sesión de forma centralizada.
+// Esto asegura que session_start() se llame y las funciones auxiliares estén disponibles.
+require_once __DIR__ . '/../php/sesion.php';
 
-$role = isset($_SESSION['role']) ? strtolower($_SESSION['role']) : '';
-$isLoggedIn = isset($_SESSION['user_id']);
+// BASE_URL debe estar definido antes de incluir este header.
+// Se espera que 'php/config.php' se incluya en la página principal.
+
+$isLoggedIn = is_logged_in();
+$role = get_user_role();
 
 $homeLink = BASE_URL . 'index.php';
 $loginLink = BASE_URL . 'paginas/inicio-sesion.php';
@@ -27,8 +28,8 @@ if ($isLoggedIn) {
             ['text' => 'Mis Paseos', 'link' => BASE_URL . 'paginas/paseador/misPaseosPaseador.php'],
             ['text' => 'Mi Perfil', 'link' => BASE_URL . 'paginas/paseador/perfilPaseador.php'],
         ];
-    } else { // 'dueno' or 'usuario'
-        $homeLink = BASE_URL . 'paginas/dueno/inicio.php';
+    } else { // 'usuario'
+        $homeLink = BASE_URL . 'paginas/dueno/landingUsuario.php';
         $menuItems = [
             ['text' => 'Mis Manadas', 'link' => BASE_URL . 'paginas/dueno/perfilUsuarioMisManadas.php'],
             ['text' => 'Mis Mascotas', 'link' => BASE_URL . 'paginas/dueno/perfilUsuarioMisMascotas.php'],
