@@ -1,7 +1,7 @@
 <?php
 function obtenerPaseadores($conn) {
     if ($conn) {
-        $sql = "SELECT id_paseador, nombre, apellido, email, telefono FROM paseador";
+        $sql = "SELECT id_paseador, nombre, apellido, email, telefono, estado FROM paseador";
         $result = $conn->query($sql);
         return $result;
     }

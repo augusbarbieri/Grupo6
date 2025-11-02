@@ -29,7 +29,14 @@ cerrarBDConexion($conn);
             <?php if ($paseadores && $paseadores->num_rows > 0): ?>
                 <?php while($row = $paseadores->fetch_assoc()): ?>
                     <tr>
-                        <td><?= htmlspecialchars($row['id_paseador']) ?></td>
+                        <td>
+                            <?php if ($row['estado'] == 'activo'): ?>
+                                ✅
+                            <?php else: ?>
+                                ❌
+                            <?php endif; ?>
+                            <?= htmlspecialchars($row['id_paseador']) ?>
+                        </td>
                         <td><?= htmlspecialchars($row['nombre']) ?></td>
                         <td><?= htmlspecialchars($row['apellido']) ?></td>
                         <td><?= htmlspecialchars($row['email']) ?></td>
