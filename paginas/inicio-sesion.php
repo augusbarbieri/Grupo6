@@ -11,7 +11,7 @@ require_once __DIR__ . '/../php/config.php';
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>Assets/css/new-style.css?v=<?php echo time(); ?>">
 </head>
-<body>
+<body class="login-page">
 
     <div class="login-container">
         <div class="login-info-panel">
