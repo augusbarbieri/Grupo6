@@ -7,4 +7,14 @@ function obtenerPaseadores($conn) {
     }
     return null;
 }
+
+function agregarPaseador($conn, $nombre, $apellido, $email, $telefono) {
+    if ($conn) {
+        $sql = "INSERT INTO paseador (nombre, apellido, email, telefono) VALUES (?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("ssss", $nombre, $apellido, $email, $telefono);
+        return $stmt->execute();
+    }
+    return false;
+}
 ?>
