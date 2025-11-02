@@ -34,7 +34,7 @@ include_once __DIR__ . '/../../componentes/header.php';
         </select>
 
         <!-- Botón logout -->
-        <button class="btn btn-danger w-100" onclick="window.location.href='<?php echo BASE_URL; ?>auth/logout.php'">
+        <button class="btn btn-danger w-100" onclick="window.location.href='<?php echo BASE_URL; ?>php/logout.php'">
             Logout
         </button>
     </div>

@@ -65,7 +65,7 @@ include_once __DIR__ . '/../../componentes/header.php';
         </div>
         <div class="profile-actions">
             <a href="<?php echo BASE_URL; ?>paginas/dueno/editarPerfil.php" class="btn btn-primary">Editar mis datos</a>
-            <a href="<?php echo BASE_URL; ?>auth/logout.php" class="btn btn-secondary">Cerrar Sesión</a>
+            <a href="<?php echo BASE_URL; ?>php/logout.php" class="btn btn-secondary">Cerrar Sesión</a>
         </div>
     </div>
 </div>

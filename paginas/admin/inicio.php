@@ -1,10 +1,14 @@
 <?php
 require_once "../../php/config.php"; // Defines BASE_URL
-require_once "../../auth/session.php";
+require_once "../../php/sesion.php";
 require_once "../../php/conexion.php";
 
-$email = controlarSesion();
-controlarRol('admin');
+// Proteger la página para administradores
+require_login();
+if (get_user_role() !== 'admin') {
+    header("Location: " . BASE_URL . "paginas/inicio-sesion.php?error=unauthorized");
+    exit();
+}
 
 $conn = conectarBDManadas();
 

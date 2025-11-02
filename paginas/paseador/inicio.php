@@ -1,8 +1,14 @@
 <?php
 require_once __DIR__ . '/../../php/config.php'; // Defines BASE_URL
-require_once "../../auth/session.php";
-$email = controlarSesion();
-controlarRol('paseador');
+require_once __DIR__ . '/../../php/sesion.php';
+
+// Proteger la página para paseadores
+require_login();
+if (get_user_role() !== 'paseador') {
+    // Si no es paseador, redirigir a una página de error o a la página de inicio de sesión
+    header("Location: " . BASE_URL . "paginas/inicio-sesion.php?error=unauthorized");
+    exit();
+}
 
 include "../../componentes/header.php";
 ?>
