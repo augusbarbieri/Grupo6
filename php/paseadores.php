@@ -17,4 +17,15 @@ function agregarPaseador($conn, $nombre, $apellido, $email, $telefono) {
     }
     return false;
 }
+
+function obtenerPaseadorPorId($conn, $id) {
+    if ($conn) {
+        $stmt = $conn->prepare("SELECT * FROM paseador WHERE id_paseador = ?");
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_assoc();
+    }
+    return null;
+}
 ?>

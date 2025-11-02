@@ -22,6 +22,7 @@ cerrarBDConexion($conn);
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Mascotas</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -34,6 +35,9 @@ cerrarBDConexion($conn);
                         <td><?= htmlspecialchars($row['email']) ?></td>
                         <td><?= htmlspecialchars($row['telefono']) ?></td>
                         <td><?= htmlspecialchars($row['mascotas']) ?></td>
+                        <td>
+                            <a href="editarCliente.php?id=<?= htmlspecialchars($row['id_usuario']) ?>" class="btn btn-primary btn-sm">Editar</a>
+                        </td>
                     </tr>
                 <?php endwhile; ?>
             <?php else: ?>
