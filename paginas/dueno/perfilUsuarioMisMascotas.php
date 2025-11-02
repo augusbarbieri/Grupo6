@@ -42,33 +42,24 @@ include_once __DIR__ . '/../../componentes/header.php';
         <div class="alert alert-danger">Ha ocurrido un error.</div>
     <?php endif; ?>
 
-    <div class="row g-4">
+    <div class="pet-grid">
         <?php if (empty($mascotas)): ?>
             <div class="col-12">
                 <p class="text-center">Aún no has registrado ninguna mascota.</p>
             </div>
         <?php else: ?>
             <?php foreach ($mascotas as $mascota): ?>
-                <div class="col-md-6 col-lg-4">
-                    <div class="pet-card h-100">
-                        <img src="<?php echo BASE_URL; ?>Assets/img/mascotas/<?php echo !empty($mascota['img']) ? htmlspecialchars($mascota['img']) : 'default.png'; ?>" class="card-img-top" alt="Foto de <?php echo htmlspecialchars($mascota['nombre']); ?>">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title"><?php echo htmlspecialchars($mascota['nombre']); ?></h5>
-                            <p class="card-text">
-                                <strong>Raza:</strong> <?php echo htmlspecialchars($mascota['raza']); ?> |
-                                <strong>Tamaño:</strong> <?php echo ucfirst(htmlspecialchars($mascota['tamano'])); ?>
-                            </p>
-                            <p class="card-text">
-                                <small><?php echo htmlspecialchars($mascota['observaciones']); ?></small>
-                            </p>
-                            <div class="card-footer mt-auto">
-                                <a href="editarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-outline-primary">
-                                    <i class="fas fa-pencil-alt"></i> Editar
-                                </a>
-                                <a href="eliminarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-outline-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar a <?php echo htmlspecialchars($mascota['nombre']); ?>?');">
-                                    <i class="fas fa-trash-alt"></i> Eliminar
-                                </a>
-                            </div>
+                <div class="pet-card">
+                    <img src="<?php echo BASE_URL; ?>Assets/img/mascotas/<?php echo !empty($mascota['img']) ? htmlspecialchars($mascota['img']) : 'default.png'; ?>" alt="Foto de <?php echo htmlspecialchars($mascota['nombre']); ?>">
+                    <div class="pet-card-overlay">
+                        <h5 class="pet-card-title"><?php echo htmlspecialchars($mascota['nombre']); ?></h5>
+                        <div class="pet-card-actions">
+                            <a href="editarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-outline-primary">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                            <a href="eliminarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-outline-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar a <?php echo htmlspecialchars($mascota['nombre']); ?>?');">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
