@@ -20,7 +20,6 @@ cerrarBDConexion($conn);
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>DNI</th>
                 <th>Email</th>
                 <th>Teléfono</th>
             </tr>
@@ -29,17 +28,16 @@ cerrarBDConexion($conn);
             <?php if ($paseadores && $paseadores->num_rows > 0): ?>
                 <?php while($row = $paseadores->fetch_assoc()): ?>
                     <tr>
-                        <td><?= htmlspecialchars($row['id']) ?></td>
+                        <td><?= htmlspecialchars($row['id_paseador']) ?></td>
                         <td><?= htmlspecialchars($row['nombre']) ?></td>
                         <td><?= htmlspecialchars($row['apellido']) ?></td>
-                        <td><?= htmlspecialchars($row['dni']) ?></td>
-                        <td><?= htmlspecialchars($row['mail']) ?></td>
+                        <td><?= htmlspecialchars($row['email']) ?></td>
                         <td><?= htmlspecialchars($row['telefono']) ?></td>
                     </tr>
                 <?php endwhile; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="6" class="text-center">No hay paseadores registrados.</td>
+                    <td colspan="5" class="text-center">No hay paseadores registrados.</td>
                 </tr>
             <?php endif; ?>
         </tbody>

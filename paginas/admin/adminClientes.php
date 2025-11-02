@@ -19,7 +19,6 @@ cerrarBDConexion($conn);
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
-                <th>DNI</th>
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Mascotas</th>
@@ -29,10 +28,9 @@ cerrarBDConexion($conn);
             <?php if ($clientes && $clientes->num_rows > 0): ?>
                 <?php while($row = $clientes->fetch_assoc()): ?>
                     <tr>
-                        <td><?= htmlspecialchars($row['id']) ?></td>
+                        <td><?= htmlspecialchars($row['id_usuario']) ?></td>
                         <td><?= htmlspecialchars($row['nombre']) ?></td>
                         <td><?= htmlspecialchars($row['apellido']) ?></td>
-                        <td><?= htmlspecialchars($row['dni']) ?></td>
                         <td><?= htmlspecialchars($row['email']) ?></td>
                         <td><?= htmlspecialchars($row['telefono']) ?></td>
                         <td><?= htmlspecialchars($row['mascotas']) ?></td>
@@ -40,7 +38,7 @@ cerrarBDConexion($conn);
                 <?php endwhile; ?>
             <?php else: ?>
                 <tr>
-                    <td colspan="7" class="text-center">No hay clientes registrados.</td>
+                    <td colspan="6" class="text-center">No hay clientes registrados.</td>
                 </tr>
             <?php endif; ?>
         </tbody>
