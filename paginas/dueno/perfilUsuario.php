@@ -39,7 +39,7 @@ include_once __DIR__ . '/../../componentes/header.php';
     ?>
     <div class="profile-card">
         <div class="profile-header">
-            <img src="<?php echo BASE_URL; ?>Assets/img/Usuario.jpg" alt="Foto de perfil" class="profile-img">
+            <img src="<?php echo BASE_URL . htmlspecialchars($usuario['img'] ?? 'Assets/img/Usuario.jpg'); ?>" alt="Foto de perfil" class="profile-img">
         </div>
         <div class="profile-body">
             <div class="profile-info-item">
