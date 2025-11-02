@@ -13,7 +13,8 @@ cerrarBDConexion($conn);
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Listado de Clientes</h2>
     </div>
-    <table class="table">
+    <div class="table-container">
+    <table class="custom-table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -47,6 +48,7 @@ cerrarBDConexion($conn);
             <?php endif; ?>
         </tbody>
     </table>
+    </div>
 </main>
 
 <?php include_once '../../componentes/footer.php'; ?>
