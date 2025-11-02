@@ -1,4 +1,7 @@
 <?php
+// Incluir la configuración para tener disponible BASE_URL
+require_once __DIR__ . '/config.php';
+
 // Siempre se debe llamar a session_start() al principio
 // si vas a trabajar con sesiones.
 session_start();
@@ -31,17 +34,17 @@ function crearSesion($clave, $valor, $role = 'usuario', $user_id = null, $name =
         $_SESSION['user_img'] = $img;
     }
 
-    // Redirigimos según el rol. Rutas relativas desde la carpeta php/ hacia paginas/...
+    // Redirigimos según el rol, usando BASE_URL para rutas absolutas
     $roleLower = strtolower($role);
     if ($roleLower === 'admin' || $roleLower === 'administrador') {
-        header("Location: ../paginas/admin/inicio.php");
+        header("Location: " . BASE_URL . "paginas/admin/inicio.php");
         exit();
     } elseif ($roleLower === 'paseador') {
-        header("Location: ../paginas/paseador/inicio.php");
+        header("Location: " . BASE_URL . "paginas/paseador/inicio.php");
         exit();
     } else {
         // Por defecto, dueño de mascota
-        header("Location: ../paginas/dueno/inicio.php");
+        header("Location: " . BASE_URL . "paginas/dueno/inicio.php");
         exit();
     }
 }
@@ -59,7 +62,7 @@ function cerrarSesion($clave)
     session_destroy();
 
     // Redirecciona a la página de login.
-    header("Location: ../paginas/inicio-sesion.php");
+    header("Location: " . BASE_URL . "paginas/inicio-sesion.php");
     exit();
 }
 
@@ -78,7 +81,7 @@ function controlarSesion()
     } else {
         // Si no existe, significa que el usuario no está logueado.
         // Lo redirigimos a la página de login.
-        header("Location: ../paginas/inicio-sesion.php");
+        header("Location: " . BASE_URL . "paginas/inicio-sesion.php");
         exit();
     }
     return $sesionUsuario;
