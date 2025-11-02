@@ -6,21 +6,8 @@ require_once __DIR__ . '/config.php';
 // si vas a trabajar con sesiones.
 session_start();
 
-/**
- * Función para crear la sesión después del login/registro.
- * Recibe la clave (generalmente 'email') y el valor (el email del usuario).
- */
-/**
- * Crear sesión y redirigir según el rol del usuario.
- *
- * @param string $clave  Nombre de la variable de sesión (ej. 'email')
- * @param string $valor  Valor a guardar (ej. el email)
- * @param string $role   Rol del usuario: 'usuario'|'paseador'|'admin' (case-insensitive)
- */
-function crearSesion($clave, $valor, $role = 'usuario', $user_id = null, $name = null, $img = null)
-{
-    // Guardamos el email (o la clave que se indique) y el rol en la sesión.
-    $_SESSION[$clave] = $valor;
+function crearSesion($email, $role, $user_id, $name, $img) {
+    $_SESSION['email'] = $email;
     $_SESSION['role'] = strtolower($role);
 
     // Guardar id y datos básicos en sesión si se pasan
@@ -49,16 +36,8 @@ function crearSesion($clave, $valor, $role = 'usuario', $user_id = null, $name =
     }
 }
 
-/**
- * Función para cerrar la sesión (Logout).
- * La usaremos más adelante cuando implementes el botón de "Cerrar Sesión".
- */
-function cerrarSesion($clave)
-{
-    // Elimina la variable clave en sesión.
-    unset($_SESSION[$clave]);
-
-    // Elimina todos los datos de la sesión.
+function cerrarSesion() {
+    session_unset();
     session_destroy();
 
     // Redirecciona a la página de login.
@@ -87,4 +66,6 @@ function controlarSesion()
     return $sesionUsuario;
 }
 
-// Puedes agregar más funciones relacionadas con sesiones aquí si las necesitas.
+function get_user_role() {
+    return $_SESSION['role'] ?? null;
+}
