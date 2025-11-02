@@ -7,6 +7,11 @@ body {
     padding-top: 80px; /* Espacio para el header fijo */
 }
 
+/* Anulación para páginas sin header fijo como el login */
+body.login-page {
+    padding-top: 0;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -598,7 +603,7 @@ body {
 
 .login-info-panel {
     flex: 1;
-    background: url('../img/login-bg.png') no-repeat center center;
+    background: url('../img/login-bg-nuevo.png') no-repeat center center;
     background-size: cover;
     position: relative;
     display: flex;
