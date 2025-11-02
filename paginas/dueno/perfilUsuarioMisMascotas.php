@@ -54,15 +54,19 @@ include_once __DIR__ . '/../../componentes/header.php';
                         <img src="<?php echo BASE_URL; ?>Assets/img/mascotas/<?php echo !empty($mascota['img']) ? htmlspecialchars($mascota['img']) : 'default.png'; ?>" class="card-img-top" alt="Foto de <?php echo htmlspecialchars($mascota['nombre']); ?>">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($mascota['nombre']); ?></h5>
-                            <p class="card-text"><strong>Raza:</strong> <?php echo htmlspecialchars($mascota['raza']); ?></p>
-                            <p class="card-text"><strong>Tamaño:</strong> <?php echo ucfirst(htmlspecialchars($mascota['tamano'])); ?></p>
-                            <p class="card-text"><strong>Observaciones:</strong> <?php echo htmlspecialchars($mascota['observaciones']); ?></p>
+                            <p class="card-text">
+                                <strong>Raza:</strong> <?php echo htmlspecialchars($mascota['raza']); ?> |
+                                <strong>Tamaño:</strong> <?php echo ucfirst(htmlspecialchars($mascota['tamano'])); ?>
+                            </p>
+                            <p class="card-text">
+                                <small><?php echo htmlspecialchars($mascota['observaciones']); ?></small>
+                            </p>
                         </div>
-                        <div class="card-footer d-flex justify-content-end gap-2">
-                            <a href="editarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-sm btn-outline-primary">
+                        <div class="card-footer">
+                            <a href="editarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-outline-primary">
                                 <i class="fas fa-pencil-alt"></i> Editar
                             </a>
-                            <a href="eliminarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar a <?php echo htmlspecialchars($mascota['nombre']); ?>?');">
+                            <a href="eliminarMascota.php?id=<?php echo $mascota['id_mascota']; ?>" class="btn btn-outline-danger" onclick="return confirm('¿Estás seguro de que quieres eliminar a <?php echo htmlspecialchars($mascota['nombre']); ?>?');">
                                 <i class="fas fa-trash-alt"></i> Eliminar
                             </a>
                         </div>

@@ -350,6 +350,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    overflow: hidden; /* Asegura que la imagen respete los bordes redondeados */
 }
 
 .pet-card:hover {
@@ -358,19 +359,66 @@ body {
 }
 
 .pet-card .card-img-top {
-    border-radius: 15px 15px 0 0;
     height: 200px;
     object-fit: cover;
+    width: 100%;
 }
 
 .pet-card .card-body {
-    flex-grow: 1; /* Asegura que el cuerpo de la tarjeta ocupe el espacio disponible */
+    flex-grow: 1;
+    padding: 25px;
+    text-align: center;
+}
+
+.pet-card .card-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #3498DB;
+    margin-bottom: 15px;
+}
+
+.pet-card .card-text {
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.pet-card .card-text strong {
+    color: #333;
 }
 
 .pet-card .card-footer {
-    background-color: #fff;
-    border-top: 1px solid #f0f0f0;
-    border-radius: 0 0 15px 15px;
+    background-color: #f9f9f9;
+    border-top: none;
+    padding: 15px 25px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.pet-card .card-footer .btn {
+    border-radius: 25px;
+    font-weight: bold;
+    padding: 8px 20px;
+    border: none;
+    color: white; /* Texto blanco para ambos botones */
+}
+
+.pet-card .card-footer .btn-outline-primary {
+    background-color: #3498DB;
+}
+
+.pet-card .card-footer .btn-outline-primary:hover {
+    background-color: #2874A6;
+    color: white;
+}
+
+.pet-card .card-footer .btn-outline-danger {
+    background-color: #E74C3C;
+}
+
+.pet-card .card-footer .btn-outline-danger:hover {
+    background-color: #C0392B;
+    color: white;
 }
 
 /* Tablas */
