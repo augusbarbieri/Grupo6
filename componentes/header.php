@@ -55,10 +55,14 @@ if ($isLoggedIn) {
                 <?php foreach ($menuItems as $item): ?>
                     <a href="<?php echo $item['link']; ?>"><?php echo htmlspecialchars($item['text']); ?></a>
                 <?php endforeach; ?>
-                <a href="<?php echo $logoutLink; ?>">Cerrar sesión</a>
-            <?php else: ?>
-                <a href="<?php echo $loginLink; ?>">Login</a>
-                <a href="<?php echo $registerLink; ?>">Registro</a>
             <?php endif; ?>
         </nav>
+        <div class="header-actions">
+            <?php if ($isLoggedIn): ?>
+                <a href="<?php echo $logoutLink; ?>" class="btn-action">Cerrar sesión</a>
+            <?php else: ?>
+                <a href="<?php echo $loginLink; ?>">Login</a>
+                <a href="<?php echo $registerLink; ?>" class="btn-action">Registro</a>
+            <?php endif; ?>
+        </div>
     </header>
