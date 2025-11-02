@@ -14,7 +14,8 @@ cerrarBDConexion($conn);
         <h2>Listado de Paseadores</h2>
         <a href="adminFormAddPaseador.php" class="btn btn-primary">Agregar Paseador</a>
     </div>
-    <table class="table">
+    <div class="table-container">
+    <table class="custom-table">
         <thead>
             <tr>
                 <th>ID</th>
@@ -53,6 +54,7 @@ cerrarBDConexion($conn);
             <?php endif; ?>
         </tbody>
     </table>
+    </div>
 </main>
 
 <?php include_once '../../componentes/footer.php'; ?>
