@@ -97,7 +97,7 @@ if ($usuario_autenticado && $rol) {
             header("Location: " . BASE_URL . "paginas/admin/inicio.php");
             break;
         case 'paseador':
-            header("Location: " . BASE_URL . "paginas/paseador/inicio.php");
+            header("Location: " . BASE_URL . "paginas/paseador/perfilPaseador.php");
             break;
         case 'usuario':
             // Redirección directa a "Mis Mascotas"
