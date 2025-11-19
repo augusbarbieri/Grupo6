@@ -28,4 +28,13 @@ function obtenerPaseadorPorId($conn, $id) {
     }
     return null;
 }
+
+function actualizarPaseador($conn, $id, $nombre, $apellido, $email, $telefono) {
+    if ($conn) {
+        $stmt = $conn->prepare("UPDATE paseador SET nombre = ?, apellido = ?, email = ?, telefono = ? WHERE id_paseador = ?");
+        $stmt->bind_param("ssssi", $nombre, $apellido, $email, $telefono, $id);
+        return $stmt->execute();
+    }
+    return false;
+}
 ?>
